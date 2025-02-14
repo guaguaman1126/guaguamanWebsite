@@ -18,7 +18,7 @@ html {
 section {
     background-color: hsl(0, 0%, 100%); /* 鵝黃色 */
     width: 100%; /* 寬度自動佔滿整個螢幕 */
-    height: 100vh; /* 高度設定 */
+    min-height: 100vh; /* 高度設定 */
     padding: 3vw 1.5vw 1.5vw 1.5vw; /* 內邊距 */
     box-sizing: border-box; /* 包含邊框和內邊距在內的總寬度和高度 */
 }
