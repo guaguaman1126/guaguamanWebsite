@@ -1,8 +1,14 @@
 /* 大東西 */
 body {
-    font-family: Arial, sans-serif;
+    font-family:Arial, Helvetica, sans-serif; /* 字體選擇 */
+    color: hwb(0 0% 100%);
     margin: 0; /* 移除預設邊距 */
     padding: 0; /* 移除預設內邊距 */
+}
+
+main {
+    padding-right: 10%;
+    padding-left: 10%;
 }
 
 html {
@@ -10,9 +16,9 @@ html {
 }
 
 section {
-    background-color: #f0e68c; /* 鵝黃色 */
+    background-color: hsl(0, 0%, 100%); /* 鵝黃色 */
     width: 100%; /* 寬度自動佔滿整個螢幕 */
-    height: 700px; /* 高度設定 */
+    height: 100vh; /* 高度設定 */
     padding: 3vw 1.5vw 1.5vw 1.5vw; /* 內邊距 */
     box-sizing: border-box; /* 包含邊框和內邊距在內的總寬度和高度 */
 }
@@ -24,7 +30,7 @@ header {
     top: 0; /* 距離頂部 0 像素 */
     left: 0; /* 距離左邊 0 像素 */
     width: 100%; /* 寬度 100% */
-    background-color: hwb(41 9% 7%); /* 背景顏色 */
+    background-color: hsl(0, 0%, 100%); /* 背景顏色 */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 添加陰影效果 */
     z-index: 1000; /* 確保在其他元素之上 */
 }
@@ -57,7 +63,7 @@ nav li:not(#地呱li) {
     display: flex; /* 使用彈性盒子 */
     justify-content: center; /* 水平置中 */
     align-items: center; /* 垂直置中 */
-    background-color: chocolate;
+    background-color: #E0C68B;
 }
 
 /* 設置鏈接樣式 */
@@ -66,7 +72,9 @@ nav a {
     justify-content: center; /* 水平置中 */
     align-items: center; /* 垂直置中 */
     text-decoration: none; /* 移除下劃線 */
-    color: #333; /* 字體顏色 */
+    font-size: auto;
+    font-weight: bold;
+    color: hsl(0, 0%, 0%);
     transition: background-color 0.3s ease; /* 背景顏色過渡效果 */
     padding: 0; /* 移除內邊距 */
     width: 100%;
@@ -76,7 +84,7 @@ nav a {
 
 /* 滑鼠懸停時變更顏色 */
 nav a:hover:not(#地呱a) {
-    background-color: #f2f2f2; /* 滑鼠懸停時的背景顏色 */
+    background-color: #E0C68B; /* 滑鼠懸停時的背景顏色 */
     color: #000; /* 滑鼠懸停時的字體顏色 */
 }
 
@@ -86,9 +94,13 @@ nav a:hover:not(#地呱a) {
     height: 2.5vw; /* 設定圖片的高度 */
     border-radius:30%; /* 使圖片圓形 */
     object-fit: cover; /* 確保圖片比例正常 */
+    transition: transform 0.3s; /* 平滑過渡 */
+    cursor: pointer;
 }
 
-
+#地呱img.scale {
+    transform: scale(1.2); /* 放大效果 */
+}
 
 /* 產品介紹 */
 
@@ -100,8 +112,7 @@ nav a:hover:not(#地呱a) {
     justify-content: center;
     overflow: hidden; /* 隱藏多餘的內容 */
     width: 100%;
-    height: 30vw;
-    border: 1px solid cadetblue;
+    height: auto;
     
 }
 
@@ -110,48 +121,51 @@ nav a:hover:not(#地呱a) {
     padding: 0; /* 移除預設內邊距 */
     display: flex;
     overflow-x: auto; /* 允許橫向捲動 */
-    overflow-y: hidden; /* 允許橫向捲動 */
+    overflow-y: hidden; 
     scroll-behavior: smooth; /* 平滑捲動效果 */
-    width: 92vw; /* 確保畫廊寬度為 100% */
+    width: 94%; /* 確保畫廊寬度為 94% */
+    background-color:  #ffffff; /* 背景顏色 */
     /* border: 1px solid #000; */
 }
 
-/* 隱藏捲動條 */
 .product-gallery::-webkit-scrollbar {
     display: none; /* 隱藏捲動條 */
 }
 
 .product-item {
-    padding-right: 0.5vw; /* 產品之間的間距 */
-    background-color: #f0e68c; /* 背景顏色 */
+    box-sizing: border-box;
+    margin-right:1%;
+    border: 2px solid #d3d3d380;
     display: flex; /* 使用彈性盒子布局 */
     align-items: center; /* 垂直置中 */
     justify-content: center; /* 水平置中 */
-    border-radius: 5px; /* 圓角邊框 */
     position: relative; /* 使子元素相對於此元素定位 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 添加陰影效果 */
+    flex: 0 0 32%;
+    /* aspect-ratio: 1; */
 }
 
 
 .product-item:first-child {
-    padding-left: 0.5vw; /* 確保第一個產品有左邊距 */
+    margin-left:1%; /* 確保第一個產品有左邊距 */
 }
 
 
 
 .product-item img {
-    object-fit: cover; /* 確保圖片按比例填滿容器 */
-    height: 30vw;
-    width: 30vw;
+    object-fit: contain; /* 確保圖片按比例填滿容器 */
+    width: 100%;
+    height: 100%;
 
 }
 
 .product-info {
     position: absolute; /* 絕對定位 */
     bottom: 0; /* 定位在底部 */
-    left: 1vw; /* 左邊對齊 */
-    right: 1vw; /* 右邊對齊 */
+    left: 0vw; /* 左邊對齊 */
+    right: 0vw; /* 右邊對齊 */
     height: 80%; /* 區段的高度 */
-    background-color: rgba(255, 255, 255, 1); /* 白色背景，透明度為100% */
+    background-color: #ffffff; /* 白色背景，透明度為100% */
     opacity: 0; /* 初始透明度為0 */
     transition: opacity 0.3s ease, transform 0.3s ease; /* 添加過渡效果 */
     transform: translateY(100%); /* 從底部滑出 */
@@ -168,8 +182,8 @@ nav a:hover:not(#地呱a) {
     background-color: rgba(211, 211, 211, 1); /* 預設淺灰色 */
     color: white; /* 按鈕文字顏色 */
     border: none; /* 去掉邊框 */
-    width: 1.5vw ;
-    height: 5vw;
+    width: 3% ;
+    aspect-ratio: 0.5;
     font-size: 1vw;
     cursor: pointer; /* 鼠標指標變為手型 */
     border-radius: 5px; /* 圓角邊框 */
@@ -177,14 +191,18 @@ nav a:hover:not(#地呱a) {
 }
 
 .scroll-button:hover {
-    background-color: rgba(211, 211, 211, 0.5); /* 懸停時變成更透明的灰色 */
+    background-color: #d3d3d380; /* 懸停時變成更透明的灰色 */
 }
 
 /* 首頁部分 */
 
 #nameButton {
+    background-color: #E0C68B;
+    font-weight: bold;
     padding: 10px 20px;
     font-size: 16px;
+    border: none;
+    border-radius: 20px;
     cursor: pointer;
 
 }
@@ -194,3 +212,9 @@ nav a:hover:not(#地呱a) {
     opacity: 0; /* 初始透明度為 0 */
     transition: opacity 0.5s ease; /* 漸變效果 */
 }
+
+/* 彩蛋計數器 */
+#彩蛋計數器div {
+    font-size: 30px;
+}
+

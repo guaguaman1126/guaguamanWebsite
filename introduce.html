@@ -11,13 +11,11 @@
     <nav>
       <ul>
         <li id="地呱li">
-            <a href="#" id="地呱a">
-                <img src="地呱.jpg" alt="大頭貼" id="地呱img"">
-            </a>
+          <img src="地呱.jpg" alt="大頭貼" id="地呱img">
         </li>
         <li><a href="#home">首頁</a></li>
-        <li><a href="#about">關於我們</a></li>
         <li><a href="#products">產品</a></li>
+        <li><a href="#about">彩蛋計數器</a></li>
         <li><a href="#contact">聯絡資訊</a></li>
       </ul>
     </nav>
@@ -26,14 +24,8 @@
   <main>
     <section id="home">
       <h2>首頁</h2>
-      <p>這裡是首頁的內容。</p>
       <button id="nameButton" onclick="enterName()">不要點我</button>
       <div id="text"></div>
-    </section>
-
-    <section id="about">
-      <h2>關於我們</h2>
-      <p>這裡是關於我們的內容。</p>
     </section>
 
     <section id="products">
@@ -108,23 +100,18 @@
                 <p>產品介紹內容...</p>
               </div>
           </div>
-          <div class="product-item">
-              <img src="NCCU周邊/12.png" alt="產品 12">
-              <div class="product-info">
-                <p>產品介紹內容...</p>
-              </div>
-          </div>
-          <div class="product-item">
-              <img src="NCCU周邊/13.png" alt="產品 13">
-              <div class="product-info">
-                <p>產品介紹內容...</p>
-              </div>
-          </div>
       </div>
       
         <button class="scroll-button right" onclick="scrollRight()">&#10095;</button>
       </div>
     
+    </section>
+
+    <section id="about">
+      <h2>彩蛋計數器</h2>
+      <div id="彩蛋計數器div">
+      </div>
+      <button onclick="eggCounter()">增加計數</button>
     </section>
 
     <section id="contact">

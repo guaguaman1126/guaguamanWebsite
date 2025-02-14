@@ -1,26 +1,40 @@
-
+//scroll// 
 function scrollRight() {
     const gallery = document.getElementById('productGallery');
-    const vw = window.innerWidth * 0.01;
+    const galleryWidth = gallery.clientWidth; // 獲取容器的總寬度
     gallery.scrollBy({
         top: 0,
-        left: 91.5*vw, // 每次捲動的距離（300px * 3）
+        left: 0.99 * galleryWidth, // 捲動的實際距離
         behavior: 'smooth' // 平滑捲動
     });
 }
 
 function scrollLeft1() {
     const gallery = document.getElementById('productGallery');
-    const vw = window.innerWidth * 0.01;
+    const galleryWidth = gallery.clientWidth; // 獲取容器的總寬度
     gallery.scrollBy({
         top: 0,
-        left: -91.5*vw, // 每次捲動的距離（300px * 3）
+        left: -0.99 * galleryWidth, // 捲動的實際距離
         behavior: 'smooth' // 平滑捲動
     });
 }
 
+// 彩蛋計數器
+let eggCount = 0;
+let eggCounterdiv = document.getElementById('彩蛋計數器div');
+
+eggCounterdiv.innerHTML = "目前發現了"+eggCount+"個彩蛋!!";// 初始顯示計數
+
+function eggCounter() {
+    eggCount++;  // 增加計數
+    eggCounterdiv.innerHTML = "目前發現了"+eggCount+"個彩蛋!!";  // 更新顯示
+}
+
+
+//問好彩蛋
 function enterName() {
     let nameButton= document.getElementById('nameButton');
+    alert("你解鎖了一個彩蛋");
     let name = prompt("親愛的賓客您好，怎麼稱呼呢!!");
     if (name) {
         alert("歡迎蒞臨呱呱人的小小天地，" + name + "！");
@@ -32,14 +46,17 @@ function enterName() {
             name = prompt("??痾...這位賓客，請問要怎麼稱呼呢!???");
             if (name) {
                 alert("歡迎蒞臨呱呱人的小小天地，" + name + "！");
+                //耳包彩蛋
             } else {
                 name="耳包君";
+                alert("你又解鎖了一個彩蛋");
                 alert("算了....你就叫耳包君吧。");
-                alert("歡迎蒞臨呱呱人的小小天地，" + name + "！");
+                eggCounter();
             }
         }
     }
     nameButton.remove();
+    eggCounter();
     appearingPlot(name);
     
 }
@@ -52,7 +69,7 @@ function appearingPlot(name) {
     const textContainer = document.getElementById('text');
     let index = 0;
 
-    // 每隔 100 毫秒顯示一個字
+    // 每隔 50 毫秒顯示一個字
     const interval = setInterval(() => {
         if (index < text.length) {
             if(text[index]==="/"){
@@ -68,5 +85,39 @@ function appearingPlot(name) {
         } else {
             clearInterval(interval); // 停止計時器
         }
-    }, 100);
+    }, 50);
 }
+
+//大頭貼彩蛋//
+let icon = document.getElementById('地呱img');
+let count = 0;
+function iconEgg() {
+    
+    icon.addEventListener('click', function() {
+        count++;
+        if(count===10){
+            let Boom = new Audio("Boom.mp3");
+            Boom.play();
+            icon.classList.add('scale');
+            setTimeout(() => {
+                alert("你解鎖了彩蛋");
+            }, 100);
+            eggCounter();
+        }else if(count>10){
+            let Boom = new Audio("Boom.mp3");
+            Boom.play();
+            icon.classList.add('scale');
+        }else{
+            let Ahh = new Audio("Ahh.mp3");
+            Ahh.play();
+            icon.classList.add('scale');
+        }
+        // 在動畫結束後移除效果
+        setTimeout(() => {
+            icon.classList.remove('scale');
+        }, 300); // 500ms後移除效果
+    });
+}
+iconEgg();// 初始化
+
+
