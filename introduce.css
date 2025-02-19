@@ -19,7 +19,7 @@ section {
     background-color: hsl(0, 0%, 100%); /* 鵝黃色 */
     width: 100%; /* 寬度自動佔滿整個螢幕 */
     min-height: 100vh; /* 高度設定 */
-    padding: 3vw 1.5vw 1.5vw 1.5vw; /* 內邊距 */
+    padding: 3vw 0 1.5vw 0; 
     box-sizing: border-box; /* 包含邊框和內邊距在內的總寬度和高度 */
 }
 
@@ -33,6 +33,7 @@ header {
     background-color: hsl(0, 0%, 100%); /* 背景顏色 */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 添加陰影效果 */
     z-index: 1000; /* 確保在其他元素之上 */
+    
 }
 
 nav {
@@ -52,6 +53,7 @@ nav li {
     display: flex; /* 使用彈性盒子 */
     align-items: center; /* 垂直置中 */
     justify-content: center; /* 水平置中 */
+    
 }
 
 nav li:not(#地呱li) {
@@ -63,7 +65,7 @@ nav li:not(#地呱li) {
     display: flex; /* 使用彈性盒子 */
     justify-content: center; /* 水平置中 */
     align-items: center; /* 垂直置中 */
-    background-color: #E0C68B;
+    background-color: #FF770F;
 }
 
 /* 設置鏈接樣式 */
@@ -74,7 +76,7 @@ nav a {
     text-decoration: none; /* 移除下劃線 */
     font-size: auto;
     font-weight: bold;
-    color: hsl(0, 0%, 0%);
+    color: #FF770F;
     transition: background-color 0.3s ease; /* 背景顏色過渡效果 */
     padding: 0; /* 移除內邊距 */
     width: 100%;
@@ -84,8 +86,8 @@ nav a {
 
 /* 滑鼠懸停時變更顏色 */
 nav a:hover:not(#地呱a) {
-    background-color: #E0C68B; /* 滑鼠懸停時的背景顏色 */
-    color: #000; /* 滑鼠懸停時的字體顏色 */
+    background-color: #FF770F; /* 滑鼠懸停時的背景顏色 */
+    color: #ffffff; /* 滑鼠懸停時的字體顏色 */
 }
 
 #地呱img
@@ -124,6 +126,7 @@ nav a:hover:not(#地呱a) {
     overflow-y: hidden; 
     scroll-behavior: smooth; /* 平滑捲動效果 */
     width: 94%; /* 確保畫廊寬度為 94% */
+    height: auto;
     background-color:  #ffffff; /* 背景顏色 */
     /* border: 1px solid #000; */
 }
@@ -134,15 +137,13 @@ nav a:hover:not(#地呱a) {
 
 .product-item {
     box-sizing: border-box;
-    margin-right:1%;
+    margin-right: 1%;
     border: 2px solid #d3d3d380;
-    display: flex; /* 使用彈性盒子布局 */
-    align-items: center; /* 垂直置中 */
-    justify-content: center; /* 水平置中 */
-    position: relative; /* 使子元素相對於此元素定位 */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 添加陰影效果 */
+    display: flex;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     flex: 0 0 32%;
-    /* aspect-ratio: 1; */
+    flex-wrap: nowrap;
+    flex-direction: column;
 }
 
 
@@ -150,31 +151,63 @@ nav a:hover:not(#地呱a) {
     margin-left:1%; /* 確保第一個產品有左邊距 */
 }
 
+.product-up-section {
+    position: relative;
+    overflow: hidden;
+}
 
-
-.product-item img {
+.product-up-section img {
     object-fit: contain; /* 確保圖片按比例填滿容器 */
     width: 100%;
-    height: 100%;
+    height: auto;
+    
 
 }
 
+
 .product-info {
-    position: absolute; /* 絕對定位 */
+    position: absolute;
     bottom: 0; /* 定位在底部 */
     left: 0vw; /* 左邊對齊 */
     right: 0vw; /* 右邊對齊 */
     height: 80%; /* 區段的高度 */
-    background-color: #ffffff; /* 白色背景，透明度為100% */
+    background-color: #FF770F; /* 背景透明度為100% */
     opacity: 0; /* 初始透明度為0 */
     transition: opacity 0.3s ease, transform 0.3s ease; /* 添加過渡效果 */
     transform: translateY(100%); /* 從底部滑出 */
+    z-index: 1;
 }
 
 .product-item:hover .product-info {
     opacity: 0.7; /* 滑鼠懸停時透明度變為100% */
     transform: translateY(0); /* 向上滑出 */
+    
 }
+
+.product-down-section {
+    /* background-color: #ffffff; */
+    /* border: 1px solid #FF770F; */
+    position: relative;
+    
+}
+
+.product-down-section h6 {
+    color: #FF770F ; 
+    padding: 0;
+    margin: 10px 0 15px 0;
+    /* font-size: medium; */
+    
+}
+
+.product-down-section h5 {
+    color: #FF770F ; 
+    padding: 0;
+    margin: 0 0 30px 0;
+    /* font-size: small; */
+    font-weight: bold;
+    
+}
+
 
 
 .scroll-button {
@@ -194,10 +227,12 @@ nav a:hover:not(#地呱a) {
     background-color: #d3d3d380; /* 懸停時變成更透明的灰色 */
 }
 
+
 /* 首頁部分 */
 
 #nameButton {
-    background-color: #E0C68B;
+    background-color: #FF770F;
+    color: #ffffff;
     font-weight: bold;
     padding: 10px 20px;
     font-size: 16px;
@@ -215,6 +250,65 @@ nav a:hover:not(#地呱a) {
 
 /* 彩蛋計數器 */
 #彩蛋計數器div {
-    font-size: 30px;
+    font-size: 20px;
 }
+#eggSection{
+    display: flex;
+    flex-direction: column;
+}
+
+/* 貪吃貓 */
+[draggable="true"] {
+    /*
+     To prevent user selecting inside the drag source
+    */
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+#貪吃貓div{
+    min-height: 100%;
+    width: 100%;
+    position: relative;
+    margin-top: auto;
+}
+
+#item1{
+    height: 50px;
+    width: 50px;
+    background-image: url('burger.gif'); /* 設置背景圖像 */
+    background-size: cover; /* 使背景圖像覆蓋整個區域 */
+    background-repeat: no-repeat; /* 不重複背景圖像 */
+    background-position: center; /* 將背景圖像置中 */
+    margin: 25px; 
+    padding: 0;
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+}
+
+#zone1{
+    height: 100px;
+    width: 100px;
+    color: #FF770F;
+    background-image: url('catcry.gif'); /* 設置背景圖像 */
+    background-size: contain; /* 使背景圖像覆蓋整個區域 */
+    background-repeat: no-repeat; /* 不重複背景圖像 */
+    background-position: center; /* 將背景圖像置中 */
+    margin: 0; /* 去掉默認的邊距 */
+    padding: 0;
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+}
+
+#zone1 h6{
+    background-color: #ffffff85; /* 半透明白色背景 */
+    padding: 5px;
+    border-radius: 5px; /* 可選：圓角 */
+    margin: 0;
+}
+
 
