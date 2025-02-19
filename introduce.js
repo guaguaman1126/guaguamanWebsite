@@ -19,22 +19,40 @@ function scrollLeft1() {
     });
 }
 
-// 彩蛋計數器
+// 統整的彩蛋解鎖函數
+function unlockEgg() {
+    updateEggCounter();
+    showEggSection();
+}
+
+//增加彩蛋計數並宣告
 let eggCount = 0;
 let eggCounterdiv = document.getElementById('彩蛋計數器div');
 
-eggCounterdiv.innerHTML = "目前發現了"+eggCount+"個彩蛋!!";// 初始顯示計數
-
-function eggCounter() {
+function updateEggCounter() {
     eggCount++;  // 增加計數
-    eggCounterdiv.innerHTML = "目前發現了"+eggCount+"個彩蛋!!";  // 更新顯示
+    eggCounterdiv.innerHTML = "目前發現了" + eggCount + "個彩蛋!!";  // 更新顯示
+    alert("恭喜你解鎖了一個彩蛋");
+}
+//顯示彩蛋計數器
+let eggSectionState = false;
+function showEggSection() {
+    if (!eggSectionState) {
+        let eggSectionA = document.getElementById("eggSectionA");
+        let eggSectionH2 = document.getElementById("eggSectionH2");
+        let eggSectionP = document.getElementById("eggSectionP");
+        eggSectionA.innerHTML = "彩蛋計數器";
+        eggSectionH2.innerHTML = "彩蛋計數器";
+        eggSectionP.innerHTML = "你解鎖了隱藏區域:彩蛋計數器! 這裡有好多個彩蛋等者你去尋找，找完有獎勵喔!!";
+        eggSectionState = true;
+    }
 }
 
 
-//問好彩蛋
+
+//開頭問好
 function enterName() {
     let nameButton= document.getElementById('nameButton');
-    alert("你解鎖了一個彩蛋");
     let name = prompt("親愛的賓客您好，怎麼稱呼呢!!");
     if (name) {
         alert("歡迎蒞臨呱呱人的小小天地，" + name + "！");
@@ -46,17 +64,17 @@ function enterName() {
             name = prompt("??痾...這位賓客，請問要怎麼稱呼呢!???");
             if (name) {
                 alert("歡迎蒞臨呱呱人的小小天地，" + name + "！");
-                //耳包彩蛋
+                
             } else {
+                //耳包彩蛋
                 name="耳包君";
-                alert("你又解鎖了一個彩蛋");
+                unlockEgg();
                 alert("算了....你就叫耳包君吧。");
-                eggCounter();
+                
             }
         }
     }
     nameButton.remove();
-    eggCounter();
     appearingPlot(name);
     
 }
@@ -88,6 +106,8 @@ function appearingPlot(name) {
     }, 50);
 }
 
+
+
 //大頭貼彩蛋//
 let icon = document.getElementById('地呱img');
 let count = 0;
@@ -100,13 +120,14 @@ function iconEgg() {
             Boom.play();
             icon.classList.add('scale');
             setTimeout(() => {
-                alert("你解鎖了彩蛋");
+                unlockEgg();
             }, 100);
-            eggCounter();
+
         }else if(count>10){
             let Boom = new Audio("Boom.mp3");
             Boom.play();
             icon.classList.add('scale');
+
         }else{
             let Ahh = new Audio("Ahh.mp3");
             Ahh.play();
@@ -117,7 +138,82 @@ function iconEgg() {
             icon.classList.remove('scale');
         }, 300); // 500ms後移除效果
     });
+    
 }
 iconEgg();// 初始化
 
+
+// 拖曳物品彩蛋
+const draggableItems = document.querySelectorAll('.draggableItems');
+
+draggableItems.forEach(item => {
+    item.addEventListener("dragstart", (event) => {
+        // 設置被拖動項目的 ID
+        event.dataTransfer.setData("text/plain", event.target.id);
+    });
+});
+
+const dragZones = document.querySelectorAll(".dragZones");
+
+dragZones.forEach(zone =>{zone.addEventListener("dragover", (event) => {
+    event.preventDefault(); // 允許放下
+    });
+})
+
+dragZones.forEach(zone =>{zone.addEventListener("drop", (event) => {
+    event.preventDefault(); // 防止默認行為
+
+    // 獲取被拖動項目的 ID
+    const draggedItemId = event.dataTransfer.getData("text/plain");
+    const draggedItem = document.getElementById(draggedItemId);
+
+    //刪漢堡
+    draggedItem.remove();
+    
+    // 改gif
+    event.target.style.backgroundImage = 'url("catdance.gif")'; 
+    event.target.style.backgroundSize = '150%';
+    const text = event.target.querySelector('h6');
+    text.textContent = 'I\'m happy'; // 更改 <h6> 的文字
+    playMusic()
+
+    
+
+    setTimeout(()=>{
+        unlockEgg();
+    },100);
+
+    
+
+    // // 將被拖動的項目添加到拖放區域
+    // event.target.appendChild(draggedItem);
+   
+    });
+})
+
+//音效
+function playMusic(){
+const object = document.getElementById('zone1');
+const sound = new Audio('happycat.mp3');
+const maxDistance = 300; // 最大感應距離
+
+// 開始播放音效
+sound.loop = true;
+sound.play();
+
+// 計算距離並調整音量
+document.addEventListener('mousemove', (event) => {
+    const rect = object.getBoundingClientRect();
+    const objectX = rect.x + rect.width / 2;
+    const objectY = rect.y + rect.height / 2;
+
+    const distance = Math.sqrt(Math.pow(event.clientX - objectX, 2) + Math.pow(event.clientY - objectY, 2));
+
+    // 計算音量
+    let volume = 1 - (distance / maxDistance);
+    volume = Math.max(0, Math.min(1, volume)); // 確保音量在 0 到 1 之間
+
+    sound.volume = volume; // 設置音量
+});
+}
 
