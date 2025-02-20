@@ -32,7 +32,7 @@ let eggCounterdiv = document.getElementById('彩蛋計數器div');
 function updateEggCounter() {
     eggCount++;  // 增加計數
     eggCounterdiv.innerHTML = "目前發現了" + eggCount + "個彩蛋!!";  // 更新顯示
-    alert("恭喜你解鎖了一個彩蛋");
+    alert("恭喜你找到了一個彩蛋");
 }
 //顯示彩蛋計數器
 let eggSectionState = false;
@@ -80,12 +80,18 @@ function enterName() {
 }
 
 function appearingPlot(name) {
-    const text = "您好 " + name + "！我是呱呱人，這片仙境的持有者。非常高興能夠迎接貴賓來到我的 MYSTERY LAND！" + 
-    "//" + "作為一名正在學習網站設計的大學生，我希望透過這個充滿新奇與互動的小天地，展示我獨特的創意。在這裡，您將發現各種可以互動的小設計，期待大家能夠多方探索，享受這段奇妙的旅程。" + 
+    const text = "您好 " + name + "！我是呱呱人，這片仙境的管理人。非常高興能夠迎接貴賓來到我的 MYSTERY LAND！" + 
+    "//" + "作為一名正在學習網頁設計的大學生，我希望透過這個充滿新奇與互動的小天地，展示我獨特的創意。在這裡，您將發現各種可以互動的小設計，期待大家能夠多方探索，享受這段奇妙的旅程。" + 
     "//" + 
-"此外，這裡還有我精心設計的徽章商品，讓每位訪客都能帶走一份獨特的紀念。再次歡迎您的到來，祝您在這片仙境中度過愉快的時光！"; // 要顯示的文字
+"此外，這裡還有我設計的徽章商品，如果買了我會很開心。再次歡迎您的到來，祝您在這片仙境中度過愉快的時光！"; // 要顯示的文字
     const textContainer = document.getElementById('text');
     let index = 0;
+
+    //如果是第一次彩蛋的話，彩蛋計數器顯示名子 
+    if(eggSectionState == false){
+        const eggCounterdiv = document.getElementById("eggSectionP");
+        eggCounterdiv.innerHTML = "太守規矩的乖寶寶(例如 \""+name+"\")，是不能進入這個區域的喔，嘻嘻。";
+    }
 
     // 每隔 50 毫秒顯示一個字
     const interval = setInterval(() => {
@@ -173,9 +179,12 @@ dragZones.forEach(zone =>{zone.addEventListener("drop", (event) => {
     // 改gif
     event.target.style.backgroundImage = 'url("catdance.gif")'; 
     event.target.style.backgroundSize = '150%';
-    const text = event.target.querySelector('h6');
-    text.textContent = 'I\'m happy'; // 更改 <h6> 的文字
-    playMusic()
+    // 改台詞
+    const div = document.getElementById("product-info-cat");
+    const text = div.querySelector("p"); // 獲取第一個 <p> 元素
+    text.innerHTML = "I'm happy";
+    const sound = new Audio('happycat.mp3');
+    sound.play();
 
     
 
@@ -191,29 +200,19 @@ dragZones.forEach(zone =>{zone.addEventListener("drop", (event) => {
     });
 })
 
-//音效
-function playMusic(){
-const object = document.getElementById('zone1');
-const sound = new Audio('happycat.mp3');
-const maxDistance = 300; // 最大感應距離
+// 亂點漢堡彩蛋
+let burgercount = 0
+const burger = document.getElementById("item1")
+burger.addEventListener("click", ()=>{
+    burgercount++;
+    if(burgercount == 10){
+        alert("白癡喔你要把它點爛了，用拖曳的啦");
+    }
+})
 
-// 開始播放音效
-sound.loop = true;
-sound.play();
-
-// 計算距離並調整音量
-document.addEventListener('mousemove', (event) => {
-    const rect = object.getBoundingClientRect();
-    const objectX = rect.x + rect.width / 2;
-    const objectY = rect.y + rect.height / 2;
-
-    const distance = Math.sqrt(Math.pow(event.clientX - objectX, 2) + Math.pow(event.clientY - objectY, 2));
-
-    // 計算音量
-    let volume = 1 - (distance / maxDistance);
-    volume = Math.max(0, Math.min(1, volume)); // 確保音量在 0 到 1 之間
-
-    sound.volume = volume; // 設置音量
-});
-}
-
+// 彩蛋彩蛋
+const egg = document.getElementById("egg");
+egg.addEventListener("click", ()=>{
+    egg.remove();
+    unlockEgg();
+})
