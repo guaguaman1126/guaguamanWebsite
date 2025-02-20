@@ -154,6 +154,7 @@ nav a:hover:not(#地呱a) {
 .product-up-section {
     position: relative;
     overflow: hidden;
+    width: 100%;
 }
 
 .product-up-section img {
@@ -163,6 +164,8 @@ nav a:hover:not(#地呱a) {
     
 
 }
+
+
 
 
 .product-info {
@@ -176,6 +179,10 @@ nav a:hover:not(#地呱a) {
     transition: opacity 0.3s ease, transform 0.3s ease; /* 添加過渡效果 */
     transform: translateY(100%); /* 從底部滑出 */
     z-index: 1;
+}
+
+#product-info-cat{
+    height: 30%; /* 區段的高度 */
 }
 
 .product-item:hover .product-info {
@@ -237,15 +244,22 @@ nav a:hover:not(#地呱a) {
     padding: 10px 20px;
     font-size: 16px;
     border: none;
-    border-radius: 20px;
+    border-radius: 10px;
     cursor: pointer;
 
 }
 
+#nameButton:hover{
+    transition: background-color 0.3s ease;
+    background-color: #ffffff;
+    color: #FF770F;
+}
+
 #text {
-    font-size: 30px;
+    font-size: 20px;
     opacity: 0; /* 初始透明度為 0 */
     transition: opacity 0.5s ease; /* 漸變效果 */
+    font-weight: normal;
 }
 
 /* 彩蛋計數器 */
@@ -276,39 +290,43 @@ nav a:hover:not(#地呱a) {
 }
 
 #item1{
-    height: 50px;
-    width: 50px;
+    height: 3em;
+    width: 3em;
     background-image: url('burger.gif'); /* 設置背景圖像 */
     background-size: cover; /* 使背景圖像覆蓋整個區域 */
     background-repeat: no-repeat; /* 不重複背景圖像 */
     background-position: center; /* 將背景圖像置中 */
-    margin: 25px; 
-    padding: 0;
-    position: absolute;
-    bottom: 0;
-    left: 10px;
+    margin: 0; 
+    cursor: pointer;
 }
 
 #zone1{
-    height: 100px;
-    width: 100px;
+    width: 100%;
+    height:auto;
+    aspect-ratio: 1;
     color: #FF770F;
     background-image: url('catcry.gif'); /* 設置背景圖像 */
     background-size: contain; /* 使背景圖像覆蓋整個區域 */
     background-repeat: no-repeat; /* 不重複背景圖像 */
     background-position: center; /* 將背景圖像置中 */
     margin: 0; /* 去掉默認的邊距 */
-    padding: 0;
-    position: absolute;
-    bottom: 0;
-    right: 10px;
 }
 
-#zone1 h6{
-    background-color: #ffffff85; /* 半透明白色背景 */
-    padding: 5px;
-    border-radius: 5px; /* 可選：圓角 */
-    margin: 0;
+/* 聯絡資訊 */
+.標題div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
 }
 
+#egg{
+    width: 1.8em;
+    height: 2.4em;
+    margin: 5px;
+    background-image: url('egg.png');
+    background-size: cover;
+    border: none;
+    cursor: pointer;
+}
 
