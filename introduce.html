@@ -25,16 +25,16 @@
     <section id="home">
       <h2>首頁</h2>
       <button id="nameButton" onclick="enterName()">點我開始</button>
-      <div id="text">
-        <p>
-
-        </p>
-      </div>
+        <h5 id="text"></h5>
+      
       
     </section>
 
     <section id="products">
-      <h2>產品展示櫃</h2>
+      <div class="標題div">
+        <h2>產品展示櫃</h2>
+        <div class = "draggableItems" id = "item1" draggable="true"></div>
+     </div>
       <div class="gallery-container">
         <button class="scroll-button left" onclick="scrollLeft1()">&#10094;</button>
         <div class="product-gallery" id="productGallery">
@@ -196,9 +196,10 @@
 
           <div class="product-item">
             <div class="product-up-section">
-              <img src="NCCU周邊/12.png" alt="產品 12">
-              <div class="product-info">
-                <p>產品介紹內容...</p>
+              <div id="zone1" class = "dragZones">
+              </div>
+              <div class="product-info" id="product-info-cat">
+                <p>沃很餓，我要選布!!!</p>
               </div>
             </div>
             <div class="product-down-section">
@@ -215,25 +216,26 @@
     </section>
 
     <section id="eggSection">
-      <h2 id="eggSectionH2">待解鎖區域</h2>
+      <div class="標題div">
+        <h2 id="eggSectionH2">待解鎖區域</h2>
+      </div>
       <div>
         <div id="彩蛋計數器div">
-          太守規矩的乖寶寶是看是不到這個區域的喔，嘻嘻。
+          <P></P>
         </div>
-        <p id="eggSectionP"></p>
+        <p id="eggSectionP">太守規矩的乖寶寶是看是不到這個區域的喔，嘻嘻。</p>
       </div>
       <div id="貪吃貓div">
-        <div class = "draggableItems" id="item1" draggable="true">
-        </div>
-        <div class = "dragZones" id = "zone1">
-          <h6>I'm hungry</h6>
-        </div>
+        
+        
       </div>
     
     </section>
 
     <section id="contact">
-      <h2>聯絡資訊</h2>
+      <div class="標題div">
+        <h2>聯絡資訊</h2><div id="egg"></div>
+      </div>
       <p>這裡我們的聯絡資訊。</p>
       <input type="text" id="text" name="text" placeholder="請輸入您的密碼">
     </section>
