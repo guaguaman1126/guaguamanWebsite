@@ -54,15 +54,16 @@ function showEggSection() {
 function enterName() {
     let nameButton= document.getElementById('nameButton');
     let name = prompt("親愛的賓客您好，怎麼稱呼呢!!");
-    if (name) {
+    
+    if (name.trim() !== '') {
         alert("歡迎蒞臨呱呱人的小小天地，" + name + "！");
     } else {
         name = prompt("(放大音量)賓客您好!請問怎麼稱呼呢!!");
-        if (name) {
+        if (name.trim() !== '') {
             alert("歡迎蒞臨呱呱人的小小天地，" + name + "！");
         } else {
             name = prompt("??痾...這位賓客，請問要怎麼稱呼呢!???");
-            if (name) {
+            if (name.trim() !== '') {
                 alert("歡迎蒞臨呱呱人的小小天地，" + name + "！");
                 
             } else {
@@ -83,7 +84,7 @@ function appearingPlot(name) {
     const text = "您好 " + name + "！我是呱呱人，這片仙境的管理人。非常高興能夠迎接貴賓來到我的 MYSTERY LAND！" + 
     "//" + "作為一名正在學習網頁設計的大學生，我希望透過這個充滿新奇與互動的小天地，展示我獨特的創意。在這裡，您將發現各種可以互動的小設計，期待大家能夠多方探索，享受這段奇妙的旅程。" + 
     "//" + 
-"此外，這裡還有我設計的徽章商品，如果買了我會很開心。再次歡迎您的到來，祝您在這片仙境中度過愉快的時光！"; // 要顯示的文字
+"此外，這裡還有我設計的徽章商品，如果你買了，我會很開心。再次歡迎您的到來，祝您在這片仙境中度過愉快的時光！"; // 要顯示的文字
     const textContainer = document.getElementById('text');
     let index = 0;
 
@@ -180,9 +181,10 @@ dragZones.forEach(zone =>{zone.addEventListener("drop", (event) => {
     event.target.style.backgroundImage = 'url("catdance.gif")'; 
     event.target.style.backgroundSize = '150%';
     // 改台詞
-    const div = document.getElementById("product-info-cat");
-    const text = div.querySelector("p"); // 獲取第一個 <p> 元素
-    text.innerHTML = "I'm happy";
+    const infoDiv = document.getElementById("product-info-cat");
+    const nameText = document.getElementById("貓彩蛋名稱區");
+    infoDiv.innerHTML = "<p>I'm happy!!</p>";
+    nameText.innerHTML = "開心的貓貓";
     const sound = new Audio('happycat.mp3');
     sound.play();
 
