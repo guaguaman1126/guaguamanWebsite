@@ -17,7 +17,7 @@
         <li><a href="#home">首頁</a></li>
         <li><a href="#products">產品</a></li>
         <li><a href="#eggSection" id="eggSectionA">待解鎖區域</a></li>
-        <li><a href="#contact">聯絡資訊</a></li>
+        <li><a href="#feedback-section">顧客反饋</a></li>
       </ul>
     </nav>
   </header>
@@ -223,35 +223,78 @@
         </div>
         <p id="eggSectionP">太守規矩的乖寶寶是看是不到這個區域的喔，嘻嘻。</p>
       </div>
-      <div id="貪吃貓div">
-        
-        
-      </div>
-    
     </section>
 
-    <section id="contact">
+    <section id="feedback-section">
       <div class="標題div">
-        <h2>聯絡我們</h2><div id="egg"></div>
+        <h2>顧客反饋</h2><div id="egg"></div>
       </div>
-      <p>如果您有任何問題或建議，請隨時聯絡我們！</p>
-        <div class="icons">
-            <a href="mailto:example@example.com" class="icon">
-                <img src="email-icon.png" alt="電子郵件">
-            </a>
-            <a href="tel:+123456789" class="icon">
-                <img src="phone-icon.png" alt="電話">
-            </a>
-            <a href="https://www.facebook.com" class="icon" target="_blank">
-                <img src="facebook-icon.png" alt="Facebook">
-            </a>
+      <div class="feedback-container">
+        <div class="feedback-item">
+            <div class="customer-avatar">
+                <img src="Glogo-removebg.png" alt="顧客1" />
+            </div>
+            <div class="feedback-text">
+                <p>這是一個非常棒的服務！我會推薦給我的朋友。</p>
+                <h5>顧客1</h5>
+            </div>
         </div>
+        <div class="feedback-item">
+            <div class="customer-avatar">
+                <img src="Glogo-removebg.png" alt="顧客2" />
+            </div>
+            <div class="feedback-text">
+                <p>產品質量超乎我的預期，非常滿意！</p>
+                <h5>顧客2</h5>
+            </div>
+        </div>
+
+        <div class="feedback-item">
+          <div class="customer-avatar">
+              <img src="Glogo-removebg.png" alt="顧客1" />
+          </div>
+          <div class="feedback-text">
+              <p>這是一個非常棒的服務！我會推薦給我的朋友。</p>
+              <h5>顧客1</h5>
+          </div>
+        </div>
+        <div class="feedback-item">
+          <div class="customer-avatar">
+              <img src="Glogo-removebg.png" alt="顧客2" />
+          </div>
+          <div class="feedback-text">
+              <p>產品質量超乎我的預期，非常滿意！</p>
+              <h5>顧客2</h5>
+          </div>
+        </div>
+    </div>
+    <p id="底部通知">如果網站有任何問題或bug，歡迎填寫下方表單或用Ig通知我！</p>
     </section>
   </main>
 
   <footer>
+    <div class="icons">
+      <a href="mailto:example@example.com" class="icon">
+          <img src="Glogo-removebg.png" alt="電子郵件">
+      </a>
+      <a href="tel:+123456789" class="icon">
+          <img src="Glogo-removebg.png" alt="電話">
+      </a>
+      <a href="https://www.facebook.com" class="icon" target="_blank">
+          <img src="Glogo-removebg.png" alt="Facebook">
+      </a>
+    </div>
     <p>&copy; 2023 呱呱人. 版權所有.</p>
   </footer>
+
+  <div class="popup" id="popup">
+    <div class="popup-content">
+        <div class="close" id="close">&times;</div>
+        <h2>開聲音體驗佳</h2>
+        <p>記得戴耳機，不然會被當怪人</p>
+        <button id="sure">我知道了</button>
+    </div>
+  </div>
 
   <script src="introduce.js"></script>
 </body>
