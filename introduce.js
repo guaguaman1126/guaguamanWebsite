@@ -218,3 +218,28 @@ egg.addEventListener("click", ()=>{
     egg.remove();
     unlockEgg();
 })
+
+
+// 獲取元素
+const popup = document.getElementById("popup");
+const closeBtn = document.getElementById("close");
+const sureBtn = document.getElementById("sure");
+
+// 顯示彈出式廣告
+
+// 關閉彈出式廣告
+closeBtn.onclick = function() {
+    popup.style.display = "none";
+}
+
+sureBtn.onclick = function() {
+    popup.style.display = "none";
+}
+
+// 點擊彈出框以外的地方關閉彈出式廣告
+window.onclick = function(event) {
+    if (event.target === popup) {
+        popup.style.display = "none";
+    }
+}
+
