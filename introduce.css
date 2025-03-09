@@ -7,8 +7,11 @@ body {
 }
 
 main {
-    padding-right: 10%;
-    padding-left: 10%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+
 }
 
 html {
@@ -17,7 +20,7 @@ html {
 
 section {
     background-color: hsl(0, 0%, 100%); /* 鵝黃色 */
-    width: 100%; /* 寬度自動佔滿整個螢幕 */
+    aspect-ratio: 1.5;
     height: 100vh; /* 高度設定 */
     padding: 3vw 0 0 0; 
     box-sizing: border-box; /* 包含邊框和內邊距在內的總寬度和高度 */
@@ -37,6 +40,7 @@ header {
 }
 
 nav {
+    width: 100%;
     display: flex;
     justify-content: center; /* 將導航項目置中 */
 }
@@ -104,7 +108,21 @@ nav a:hover:not(#地呱a) {
     transform: scale(1.2); /* 放大效果 */
 }
 
-/* 產品介紹 */
+nav input{
+    display: none;
+}
+
+label {
+    display: none;
+}
+
+
+
+/* 產品展示櫃 */
+#products {
+    
+
+}
 
 .gallery-container {
     margin: 0; /* 移除預設邊距 */
@@ -155,6 +173,7 @@ nav a:hover:not(#地呱a) {
     position: relative;
     overflow: hidden;
     width: 100%;
+    height: auto;
 }
 
 .product-up-section img {
@@ -164,6 +183,32 @@ nav a:hover:not(#地呱a) {
     
 
 }
+
+#購買表單按鈕-container {
+    display: flex;
+    justify-content: center;
+}
+
+#購買表單按鈕{
+    background-color: #FF770F;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 1.5% 2%;
+    font-size: 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    margin: 2%;
+    cursor: pointer;
+    
+}
+
+#購買表單按鈕:hover {
+    transition: background-color 0.3s ease;
+    background-color: #ffffff;
+    color: #FF770F;
+}
+
+
 
 
 
@@ -252,11 +297,10 @@ nav a:hover:not(#地呱a) {
     background-color: #FF770F;
     color: #ffffff;
     font-weight: bold;
-    padding: 10px 20px;
-    font-size: 16px;
+    padding: 1.5% 2%;
+    font-size: 1rem;
     border: none;
-    border-radius: 10px;
-    cursor: pointer;
+    border-radius: 0.5rem;
 
 }
 
@@ -271,6 +315,7 @@ nav a:hover:not(#地呱a) {
     opacity: 0; /* 初始透明度為 0 */
     transition: opacity 0.5s ease; /* 漸變效果 */
     font-weight: normal;
+    margin: 0;
 }
 
 /* 彩蛋計數器 */
@@ -428,6 +473,12 @@ footer .icon:hover img {
     transform: scale(1.1); /* 滑鼠懸停效果 */
 }
 
+footer p {
+    text-align: center; /* 只置中 p 元素的文本 */
+    margin: 10px;         /* 可選：去除默認的外邊距 */
+    color:#767676;
+}
+
 /* 彈出視窗 */
 .popup {
     display: block; /* 初始隱藏 */
@@ -460,8 +511,147 @@ footer .icon:hover img {
     cursor: pointer;
 }
 
-.close:hover {
+.close:hover { 
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (aspect-ratio <= 1.5) {
+    /* CSS 規則 */
+    section {
+        width: 100%; /* 高度設定 */
+        height: auto;
+        padding: 0 3%;
+        scroll-margin-top: calc(100vw / 8);
+    }
+
+    footer {
+        
+    }
+
+    /* 產品展示櫃 */
+    .product-gallery {
+        scroll-snap-type: x mandatory;
+        width: 100%;
+    }
+    .product-item {
+        scroll-snap-align: start;
+        flex: 0 0 100%;
+    }
+
+    .scroll-button {
+    display: none;
+    }
+
+    /* 首頁 */
+    .content-container {
+        
+        /* padding: 0 3%; */
+    }
+
+    /* header */
+
+    header {
+        position: fixed; /* 固定在頁面上 */
+        top: 0; /* 距離頂部 0 像素 */
+        left: 0; /* 距離左邊 0 像素 */
+        width: 100%; /* 寬度 100% */
+        background-color: hsl(0, 0%, 100%); /* 背景顏色 */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 添加陰影效果 */
+        z-index: 1000; /* 確保在其他元素之上 */
+        
+    }
+    
+    nav {
+        display: flex;
+        justify-content: center; /* 將導航項目置中 */
+        aspect-ratio: 8;
+    }
+    /* 將列表項目水平排列 */
+    nav ul {
+        list-style-type: none; /* 移除列表樣式 */
+        margin: 0; /* 移除預設邊距 */
+        padding: 0; /* 移除預設內邊距 */
+        display: flex; /* 使用彈性盒子 */
+    }
+    
+    nav li {
+        
+        display: flex; /* 使用彈性盒子 */
+        align-items: center; /* 垂直置中 */
+        justify-content: center; /* 水平置中 */
+
+
+        height:auto; /* 每個項目的高度 */
+        
+    }
+    
+    nav li:not(#地呱li) {
+        width: 22.5vw; /* 其他項目的寬度 */
+    }
+    
+    #地呱li {
+        width: 10vw; /* 大頭貼項目的寬度 */
+        display: flex; /* 使用彈性盒子 */
+        justify-content: center; /* 水平置中 */
+        align-items: center; /* 垂直置中 */
+        background-color: #FF770F;
+    }
+    
+    /* 設置鏈接樣式 */
+    nav a {
+        display: flex; 
+        justify-content: center; /* 水平置中 */
+        align-items: center; /* 垂直置中 */
+        text-decoration: none; /* 移除下劃線 */
+        font-size: auto;
+        font-weight: bold;
+        color: #FF770F;
+        transition: background-color 0.3s ease; /* 背景顏色過渡效果 */
+        padding: 0; /* 移除內邊距 */
+        width: 100%;
+        height: 100%;
+        cursor: pointer; /* 設定游標為可點擊 */
+    }
+    
+    /* 滑鼠懸停時變更顏色 */
+    nav a:hover:not(#地呱a) {
+        background-color: #FF770F; /* 滑鼠懸停時的背景顏色 */
+        color: #ffffff; /* 滑鼠懸停時的字體顏色 */
+    }
+    
+    #地呱img
+     {
+        width: 8vw; /* 設定圖片的寬度 */
+        height: 8vw; /* 設定圖片的高度 */
+        border-radius:30%; /* 使圖片圓形 */
+        object-fit: cover; /* 確保圖片比例正常 */
+        transition: transform 0.3s; /* 平滑過渡 */
+        cursor: pointer;
+    }
+    
+    #地呱img.scale {
+        transform: scale(1.2); /* 放大效果 */
+    }
+    
+
 }
