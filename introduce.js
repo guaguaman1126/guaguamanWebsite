@@ -1,4 +1,4 @@
-//scroll// 
+// Scroll 
 function scrollRight() {
     const gallery = document.getElementById('productGallery');
     const galleryWidth = gallery.clientWidth; // 獲取容器的總寬度
@@ -118,11 +118,15 @@ function appearingPlot(name) {
 //大頭貼彩蛋//
 let icon = document.getElementById('地呱img');
 let count = 0;
+let targetCount = 10;
 function iconEgg() {
+    if(window.matchMedia("(aspect-ratio <= 1.5)").matches){
+        targetCount = 1;
+    }
     
     icon.addEventListener('click', function() {
         count++;
-        if(count===10){
+        if(count===targetCount){
             let Boom = new Audio("Boom.mp3");
             Boom.play();
             icon.classList.add('scale');
@@ -130,7 +134,7 @@ function iconEgg() {
                 unlockEgg();
             }, 100);
 
-        }else if(count>10){
+        }else if(count>targetCount){
             let Boom = new Audio("Boom.mp3");
             Boom.play();
             icon.classList.add('scale');
@@ -242,4 +246,24 @@ window.onclick = function(event) {
         popup.style.display = "none";
     }
 }
+
+
+// 手機板function
+function myFunction() {
+    if (window.matchMedia("(aspect-ratio <= 1.5)").matches) {
+        // 小螢幕特定行為
+        console.log("小螢幕：執行小螢幕特定的功能");
+        // 實現小螢幕的功能
+    } else {
+        // 大螢幕特定行為
+        console.log("大螢幕：執行大螢幕特定的功能");
+        // 實現大螢幕的功能
+    }
+}
+
+// 當螢幕大小改變時重新執行函數
+window.addEventListener('resize', myFunction);
+
+// 初始執行
+document.addEventListener('DOMContentLoaded', myFunction);
 
