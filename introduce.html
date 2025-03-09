@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>呱呱人的商品展示網頁</title>
   <link rel="stylesheet" href="introduce.css">
   <link rel="icon" href="Glogo-removebg.png" type="image/x-icon">
@@ -23,11 +23,13 @@
   </header>
 
   <main>
+    <nav>為了讓首頁不備裁到</nav>
     <section id="home">
       <h2>首頁</h2>
+      <div class="content-container">
       <button id="nameButton" onclick="enterName()">點我開始</button>
-        <h5 id="text"></h5>
-      
+      <h5 id="text"></h5>
+    </div>
       
     </section>
 
@@ -167,7 +169,7 @@
             <div class="product-up-section">
               <img src="NCCU周邊/10.png" alt="產品 10">
               <div class="product-info">
-                <p>謝喜政不喜離的變體，源自Floptropica University的抽象梗。懂得都懂，不懂就算了，這對你們來說還太早。</p>
+                <p>謝喜政不喜離的變體，源自Floptropica University的抽象梗。懂得都懂，不懂的....這對你們來說還太早。</p>
               </div>
             </div>
             <div class="product-down-section">
@@ -201,14 +203,16 @@
               </div>
             </div>
             <div class="product-down-section">
-              <h6 id="貓彩蛋名稱區">肚子餓的貓貓</h6>
+              <h6 id="貓彩蛋名稱區">肚子餓的貓貓???</h6>
               <h5>TWD 50.0</h5>
             </div>
           </div>
-          
       </div>
-      
         <button class="scroll-button right" onclick="scrollRight()">&#10095;</button>
+      </div>
+
+      <div id="購買表單按鈕-container">
+      <button id="購買表單按鈕">施主點我購買</button>
       </div>
     
     </section>
@@ -284,7 +288,8 @@
           <img src="Glogo-removebg.png" alt="Facebook">
       </a>
     </div>
-    <p>&copy; 2023 呱呱人. 版權所有.</p>
+    <div></div>
+    <p>&copy; 2025 呱呱人. 版權所有.</p>
   </footer>
 
   <div class="popup" id="popup">
@@ -295,7 +300,6 @@
         <button id="sure">我知道了</button>
     </div>
   </div>
-
-  <script src="introduce.js"></script>
 </body>
 </html>
+<script src="introduce.js"></script>
