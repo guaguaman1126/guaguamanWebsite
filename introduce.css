@@ -216,8 +216,8 @@ label {
 .product-info {
     position: absolute;
     bottom: 0; /* 定位在底部 */
-    left: 0vw; /* 左邊對齊 */
-    right: 0vw; /* 右邊對齊 */
+    left: 0; /* 左邊對齊 */
+    right: 0; /* 右邊對齊 */
     height: 80%; /* 區段的高度 */
     background-color: #ffffffd4; /* 背景透明度為100% */
     transition: transform 0.3s ease; 
@@ -240,6 +240,7 @@ label {
 #product-info-cat{
     height: 30%; /* 區段的高度 */
 }
+
 
 
 
@@ -560,6 +561,14 @@ footer p {
 
     .scroll-button {
     display: none;
+    }
+
+    .product-item:hover .product-info {
+        transform:translateY(100%); 
+    }
+
+    .product-item.active .product-info {
+        transform: translateY(0); 
     }
 
     /* 首頁 */
