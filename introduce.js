@@ -19,6 +19,25 @@ function scrollLeft1() {
     });
 }
 
+//手機上更換功能成點集顯示info
+
+document.querySelectorAll('.product-item').forEach(item => {
+    
+    item.addEventListener('click', () => {
+        let display = false;
+        if(!display){
+            // 切換 active 類
+            item.classList.toggle('active');
+            display = true;
+        }else{
+            // 切換 active 類
+            item.classList.toggle('active',false);
+            display = false;
+        }
+        
+    });
+});
+
 // 統整的彩蛋解鎖函數
 function unlockEgg() {
     updateEggCounter();
@@ -55,15 +74,15 @@ function enterName() {
     let nameButton= document.getElementById('nameButton');
     let name = prompt("親愛的賓客您好，怎麼稱呼呢!!");
     
-    if (name.trim() !== '') {
+    if (name !== null && name.trim() !== '') {
         alert("歡迎蒞臨呱呱人的小小天地，" + name + "！");
     } else {
         name = prompt("(放大音量)賓客您好!請問怎麼稱呼呢!!");
-        if (name.trim() !== '') {
+        if (name !== null && name.trim() !== '') {
             alert("歡迎蒞臨呱呱人的小小天地，" + name + "！");
         } else {
             name = prompt("??痾...這位賓客，請問要怎麼稱呼呢!???");
-            if (name.trim() !== '') {
+            if (name !== null && name.trim() !== '') {
                 alert("歡迎蒞臨呱呱人的小小天地，" + name + "！");
                 
             } else {
@@ -121,7 +140,7 @@ let count = 0;
 let targetCount = 10;
 function iconEgg() {
     if(window.matchMedia("(aspect-ratio <= 1.5)").matches){
-        targetCount = 1;
+        targetCount = 3;
     }
     
     icon.addEventListener('click', function() {
