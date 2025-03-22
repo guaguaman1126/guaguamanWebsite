@@ -231,7 +231,7 @@ const burger = document.getElementById("item1")
 burger.addEventListener("click", ()=>{
     burgercount++;
     if(burgercount == 10){
-        alert("白癡喔你要把它點爛了，用拖曳的啦");
+        alert("白癡喔你要把它點爛了，用拖曳的啦(手機請長按再滑動)");
     }
 })
 
