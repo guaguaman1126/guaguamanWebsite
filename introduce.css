@@ -579,7 +579,7 @@ footer p {
         position: absolute;
         bottom: 50%;
         right: -2.5%;
-        z-index: 3;
+        z-index: 5;
     }
     .left {
         position: absolute;
