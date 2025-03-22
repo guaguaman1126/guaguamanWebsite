@@ -199,6 +199,7 @@ label {
     border-radius: 0.5rem;
     margin: 2%;
     cursor: pointer;
+    text-decoration: none;
     
 }
 
