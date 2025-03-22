@@ -130,7 +130,7 @@ label {
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden; /* 隱藏多餘的內容 */
+    /* overflow: hidden; 隱藏多餘的內容不用用到 */
     width: 100%;
     height: auto;
     
@@ -276,7 +276,7 @@ label {
 
 .scroll-button {
     margin: 0;
-    background-color: rgba(211, 211, 211, 1); /* 預設淺灰色 */
+    background-color: #ff770f5f; /* 預設淺灰色 */
     color: white; /* 按鈕文字顏色 */
     border: none; /* 去掉邊框 */
     width: 3% ;
@@ -559,9 +559,30 @@ footer p {
         flex: 0 0 100%;
     }
 
-    .scroll-button {
-    display: none;
+    .gallery-container {
+        position: relative;
     }
+
+    .scroll-button {
+        width: 5%;
+        font-size: 1em;
+
+    }
+    .scroll-button:hover {
+        background-color:#ff770f5f; /* 懸停時變成更透明的灰色 */
+    }
+    .right {
+        position: absolute;
+        bottom: 50%;
+        right: -2.5%;
+    }
+    .left {
+        position: absolute;
+        bottom: 50%;
+        left: -2.5%;
+        z-index: 2;
+    }
+
 
     .product-item:hover .product-info {
         transform:translateY(100%); 
