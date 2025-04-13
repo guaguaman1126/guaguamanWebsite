@@ -286,3 +286,24 @@ window.addEventListener('resize', myFunction);
 // 初始執行
 document.addEventListener('DOMContentLoaded', myFunction);
 
+//抓顧客回饋下來
+// 在 introduce.js 中加這段
+const feedbackContainer = document.getElementById("feedback-container");
+
+fetch("https://script.google.com/macros/s/AKfycbz37dG7SnteIA9a_pEoTMmEgfgbSJISnA6WLm1eung9N__DAHF_hu-zbFudoZ5ZtmJWyg/exec")
+  .then(res => res.json())
+  .then(data => {
+    data.forEach(item => {
+      const div = document.createElement("div");
+      div.className = "feedback-item";
+      div.innerHTML = `
+        <p class="feedback-name">${item.暱稱}</p>
+        <p class="feedback-text">${item.顧客評價}</p>
+      `;
+      feedbackContainer.insertBefore(div, feedbackContainer.firstChild);
+    });
+  })
+  .catch(err => console.error("留言載入失敗：", err));
+
+
+
