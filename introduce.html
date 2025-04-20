@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -7,6 +8,7 @@
   <link rel="stylesheet" href="introduce.css">
   <link rel="icon" href="Glogo-removebg.png" type="image/x-icon">
 </head>
+
 <body>
   <header>
     <nav>
@@ -27,18 +29,18 @@
     <section id="home">
       <h2>首頁</h2>
       <div class="content-container">
-      <button id="nameButton" onclick="enterName()">點我開始</button>
-      <h5 id="text"></h5>
-    </div>
-      
+        <button id="nameButton" onclick="enterName()">點我開始</button>
+        <h5 id="text"></h5>
+      </div>
+
     </section>
 
     <section id="products">
       <div class="標題div">
         <h2>產品展示櫃</h2>
-        <div class = "draggableItems" id = "item1" draggable="true"></div>
-     </div>
-     <p id="手機版使用說明">點擊圖片有商品介紹，左右滑動可以切換商品喔!</p>
+        <div class="draggableItems" id="item1" draggable="true"></div>
+      </div>
+      <p id="手機版使用說明">點擊圖片有商品介紹，左右滑動可以切換商品喔!</p>
       <div class="gallery-container">
         <button class="scroll-button left" onclick="scrollLeft1()">&#10094;</button>
         <div class="product-gallery" id="productGallery">
@@ -195,7 +197,7 @@
 
           <div class="product-item">
             <div class="product-up-section">
-              <div id="zone1" class = "dragZones">
+              <div id="zone1" class="dragZones">
               </div>
               <div class="product-info" id="product-info-cat">
                 <p>：沃很餓，我要選布!!</p>
@@ -208,15 +210,15 @@
               <h5>TWD 非賣品</h5>
             </div>
           </div>
-      </div>
+        </div>
         <button class="scroll-button right" onclick="scrollRight()">&#10095;</button>
       </div>
 
       <div id="購買表單按鈕-container">
-      <a id="購買表單按鈕" href="https://forms.gle/a35s54ek1ZHB6uii8" class="icon">施主點我購買</a>
-      
+        <a id="購買表單按鈕" href="https://forms.gle/a35s54ek1ZHB6uii8" class="icon">施主點我購買</a>
+
       </div>
-    
+
     </section>
 
     <section id="eggSection">
@@ -233,47 +235,63 @@
 
     <section id="feedback-section">
       <div class="標題div">
-        <h2>顧客反饋</h2><div id="egg"></div>
+        <h2>顧客反饋</h2>
+        <div id="egg"></div>
       </div>
-      <div id ="feedback-container">
+      <div id="feedback-container">
         <div class="feedback-item">
           <p class="feedback-name">陳小姐??</p>
           <p class="feedback-text">以購買小孩很愛吃</p>
           <div class="feedback-img-container">
             <img class="feedback-img" src="Glogo.png">
             <img class="feedback-img" src="Glogo.png">
-            <img class="feedback-img" src="https://lh3.googleusercontent.com/d/1Vugo1SzXereG14f6XBd96oKB4CeLhnHl" alt="圖片">
+            <img class="feedback-img" src="https://lh3.googleusercontent.com/d/1Vugo1SzXereG14f6XBd96oKB4CeLhnHl"
+              alt="圖片">
           </div>
         </div>
       </div>
-      <p id="底部通知">如果網站有任何問題或bug，歡迎填寫下方表單或用Ig通知我！</p>
+      <p id="底部通知">如果網站有任何問題或bug，歡迎用Ig通知我！</p>
     </section>
   </main>
 
   <footer>
     <div class="icons">
-      <a href="mailto:example@example.com" class="icon">
-          <img src="Glogo-removebg.png" alt="電子郵件">
-      </a>
-      <a href="tel:+123456789" class="icon">
-          <img src="Glogo-removebg.png" alt="電話">
-      </a>
-      <a href="https://www.facebook.com" class="icon" target="_blank">
-          <img src="Glogo-removebg.png" alt="Facebook">
-      </a>
+
+      <div class="icon-item">
+        <a href="mailto:example@example.com" class="icon">
+          <img src="Logo/ig.png" alt="ig">
+        </a>
+        <p>contact me</P>
+      </div>
+
+      <div class="icon-item">
+        <a href="https://forms.gle/Y1xz8S3UAYjdtiw66" class="icon">
+          <img src="Logo/form.png" alt="購買表單">
+        </a>
+        <P>購買表單</p>
+      </div>
+
+      <div class="icon-item">
+        <a href="https://forms.gle/jTrxFdWcjSr3BUeJ7" class="icon">
+          <img src="Logo/form.png" alt="回饋表單">
+        </a>
+        <p>商品回饋表單</p>
+      </div>
+
     </div>
     <div></div>
-    <p>&copy; 2025 呱呱人. 版權所有.</p>
+    <!-- <p>&copy; 2025 呱呱人. 版權所有.</p> -->
   </footer>
 
   <div class="popup" id="popup">
     <div class="popup-content">
-        <div class="close" id="close">&times;</div>
-        <h2>開聲音體驗佳</h2>
-        <p>記得戴耳機，不然會被當怪人</p>
-        <button id="sure">我知道了</button>
+      <div class="close" id="close">&times;</div>
+      <h2>開聲音體驗佳</h2>
+      <p>記得戴耳機，不然會被當怪人</p>
+      <button id="sure">我知道了</button>
     </div>
   </div>
 </body>
+
 </html>
 <script src="introduce.js"></script>

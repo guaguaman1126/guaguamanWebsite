@@ -1,9 +1,12 @@
 /* 大東西 */
 body {
-    font-family:Arial, Helvetica, sans-serif; /* 字體選擇 */
+    font-family: Arial, Helvetica, sans-serif;
+    /* 字體選擇 */
     color: hwb(0 0% 100%);
-    margin: 0; /* 移除預設邊距 */
-    padding: 0; /* 移除預設內邊距 */
+    margin: 0;
+    /* 移除預設邊距 */
+    padding: 0;
+    /* 移除預設內邊距 */
 }
 
 main {
@@ -15,107 +18,146 @@ main {
 }
 
 html {
-    scroll-behavior: smooth; /* 平滑滾動 */
+    scroll-behavior: smooth;
+    /* 平滑滾動 */
 }
 
 section {
-    background-color: hsl(0, 0%, 100%); /* 鵝黃色 */
+    background-color: hsl(0, 0%, 100%);
+    /* 鵝黃色 */
     aspect-ratio: 1.5;
-    height: 100vh; /* 高度設定 */
-    padding: 3vw 0 0 0; 
-    box-sizing: border-box; /* 包含邊框和內邊距在內的總寬度和高度 */
+    height: 100vh;
+    /* 高度設定 */
+    padding: 3vw 0 0 0;
+    box-sizing: border-box;
+    /* 包含邊框和內邊距在內的總寬度和高度 */
 }
 
-.標題div{
+.標題div {
     display: flex;
     flex-direction: row;
     align-items: center;
-    
+
 }
 
 /* header */
 
 header {
-    position: fixed; /* 固定在頁面上 */
-    top: 0; /* 距離頂部 0 像素 */
-    left: 0; /* 距離左邊 0 像素 */
-    width: 100%; /* 寬度 100% */
-    background-color: hsl(0, 0%, 100%); /* 背景顏色 */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 添加陰影效果 */
-    z-index: 1000; /* 確保在其他元素之上 */
-    
+    position: fixed;
+    /* 固定在頁面上 */
+    top: 0;
+    /* 距離頂部 0 像素 */
+    left: 0;
+    /* 距離左邊 0 像素 */
+    width: 100%;
+    /* 寬度 100% */
+    background-color: hsl(0, 0%, 100%);
+    /* 背景顏色 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* 添加陰影效果 */
+    z-index: 1000;
+    /* 確保在其他元素之上 */
+
 }
 
 nav {
     width: 100%;
     display: flex;
-    justify-content: center; /* 將導航項目置中 */
+    justify-content: center;
+    /* 將導航項目置中 */
 }
+
 /* 將列表項目水平排列 */
 nav ul {
-    list-style-type: none; /* 移除列表樣式 */
-    margin: 0; /* 移除預設邊距 */
-    padding: 0; /* 移除預設內邊距 */
-    display: flex; /* 使用彈性盒子 */
+    list-style-type: none;
+    /* 移除列表樣式 */
+    margin: 0;
+    /* 移除預設邊距 */
+    padding: 0;
+    /* 移除預設內邊距 */
+    display: flex;
+    /* 使用彈性盒子 */
 }
 
 nav li {
-    height: 3vw; /* 每個項目的高度 */
-    display: flex; /* 使用彈性盒子 */
-    align-items: center; /* 垂直置中 */
-    justify-content: center; /* 水平置中 */
-    
+    height: 3vw;
+    /* 每個項目的高度 */
+    display: flex;
+    /* 使用彈性盒子 */
+    align-items: center;
+    /* 垂直置中 */
+    justify-content: center;
+    /* 水平置中 */
+
 }
 
 nav li:not(#地呱li) {
-    width: 22.5vw; /* 其他項目的寬度 */
+    width: 22.5vw;
+    /* 其他項目的寬度 */
 }
 
 #地呱li {
-    width: 10vw; /* 大頭貼項目的寬度 */
-    display: flex; /* 使用彈性盒子 */
-    justify-content: center; /* 水平置中 */
-    align-items: center; /* 垂直置中 */
+    width: 10vw;
+    /* 大頭貼項目的寬度 */
+    display: flex;
+    /* 使用彈性盒子 */
+    justify-content: center;
+    /* 水平置中 */
+    align-items: center;
+    /* 垂直置中 */
     background-color: #FF770F;
 }
 
 /* 設置鏈接樣式 */
 nav a {
-    display: flex; 
-    justify-content: center; /* 水平置中 */
-    align-items: center; /* 垂直置中 */
-    text-decoration: none; /* 移除下劃線 */
+    display: flex;
+    justify-content: center;
+    /* 水平置中 */
+    align-items: center;
+    /* 垂直置中 */
+    text-decoration: none;
+    /* 移除下劃線 */
     font-size: auto;
     font-weight: bold;
     color: #FF770F;
-    transition: background-color 0.3s ease; /* 背景顏色過渡效果 */
-    padding: 0; /* 移除內邊距 */
+    transition: background-color 0.3s ease;
+    /* 背景顏色過渡效果 */
+    padding: 0;
+    /* 移除內邊距 */
     width: 100%;
     height: 100%;
-    cursor: pointer; /* 設定游標為可點擊 */
+    cursor: pointer;
+    /* 設定游標為可點擊 */
 }
 
 /* 滑鼠懸停時變更顏色 */
 nav a:hover:not(#地呱a) {
-    background-color: #FF770F; /* 滑鼠懸停時的背景顏色 */
-    color: #ffffff; /* 滑鼠懸停時的字體顏色 */
+    background-color: #FF770F;
+    /* 滑鼠懸停時的背景顏色 */
+    color: #ffffff;
+    /* 滑鼠懸停時的字體顏色 */
 }
 
-#地呱img
- {
-    width: 2.5vw; /* 設定圖片的寬度 */
-    height: 2.5vw; /* 設定圖片的高度 */
-    border-radius:30%; /* 使圖片圓形 */
-    object-fit: cover; /* 確保圖片比例正常 */
-    transition: transform 0.3s; /* 平滑過渡 */
+#地呱img {
+    width: 2.5vw;
+    /* 設定圖片的寬度 */
+    height: 2.5vw;
+    /* 設定圖片的高度 */
+    border-radius: 30%;
+    /* 使圖片圓形 */
+    object-fit: cover;
+    /* 確保圖片比例正常 */
+    transition: transform 0.3s;
+    /* 平滑過渡 */
     cursor: pointer;
 }
 
 #地呱img.scale {
-    transform: scale(1.2); /* 放大效果 */
+    transform: scale(1.2);
+    /* 放大效果 */
 }
 
-nav input{
+nav input {
     display: none;
 }
 
@@ -126,38 +168,44 @@ label {
 
 
 /* 產品展示櫃 */
-#products {
-    
-
-}
+#products {}
 
 .gallery-container {
-    margin: 0; /* 移除預設邊距 */
-    padding: 0; /* 移除預設內邊距 */
+    margin: 0;
+    /* 移除預設邊距 */
+    padding: 0;
+    /* 移除預設內邊距 */
     display: flex;
     align-items: center;
     justify-content: center;
     /* overflow: hidden; 隱藏多餘的內容不用用到 */
     width: 100%;
     height: auto;
-    
+
 }
 
 .product-gallery {
-    margin: 0; /* 移除預設邊距 */
-    padding: 0; /* 移除預設內邊距 */
+    margin: 0;
+    /* 移除預設邊距 */
+    padding: 0;
+    /* 移除預設內邊距 */
     display: flex;
-    overflow-x: auto; /* 允許橫向捲動 */
-    overflow-y: hidden; 
-    scroll-behavior: smooth; /* 平滑捲動效果 */
-    width: 94%; /* 確保畫廊寬度為 94% */
+    overflow-x: auto;
+    /* 允許橫向捲動 */
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    /* 平滑捲動效果 */
+    width: 94%;
+    /* 確保畫廊寬度為 94% */
     height: auto;
-    background-color:  #ffffff; /* 背景顏色 */
+    background-color: #ffffff;
+    /* 背景顏色 */
     /* border: 1px solid #000; */
 }
 
 .product-gallery::-webkit-scrollbar {
-    display: none; /* 隱藏捲動條 */
+    display: none;
+    /* 隱藏捲動條 */
 }
 
 .product-item {
@@ -173,7 +221,8 @@ label {
 
 
 .product-item:first-child {
-    margin-left:1%; /* 確保第一個產品有左邊距 */
+    margin-left: 1%;
+    /* 確保第一個產品有左邊距 */
 }
 
 .product-up-section {
@@ -184,10 +233,11 @@ label {
 }
 
 .product-up-section img {
-    object-fit: contain; /* 確保圖片按比例填滿容器 */
+    object-fit: contain;
+    /* 確保圖片按比例填滿容器 */
     width: 100%;
     height: auto;
-    
+
 
 }
 
@@ -196,7 +246,7 @@ label {
     justify-content: center;
 }
 
-#購買表單按鈕{
+#購買表單按鈕 {
     background-color: #FF770F;
     color: #ffffff;
     font-weight: bold;
@@ -206,7 +256,7 @@ label {
     margin: 2%;
     cursor: pointer;
     text-decoration: none;
-    
+
 }
 
 #購買表單按鈕:hover {
@@ -226,30 +276,36 @@ label {
 
 .product-info {
     position: absolute;
-    bottom: 0; /* 定位在底部 */
-    left: 0; /* 左邊對齊 */
-    right: 0; /* 右邊對齊 */
-    height: 80%; /* 區段的高度 */
-    background-color: #ffffffd4; /* 背景透明度為100% */
-    transition: transform 0.3s ease; 
-    transform: translateY(100%); 
+    bottom: 0;
+    /* 定位在底部 */
+    left: 0;
+    /* 左邊對齊 */
+    right: 0;
+    /* 右邊對齊 */
+    height: 80%;
+    /* 區段的高度 */
+    background-color: #ffffffd4;
+    /* 背景透明度為100% */
+    transition: transform 0.3s ease;
+    transform: translateY(100%);
     z-index: 1;
     overflow-y: auto;
 }
 
-.product-info p{
-    opacity: 1 ;
+.product-info p {
+    opacity: 1;
     color: #ff770f;
     font-weight: bold;
     font-size: 1em;
 }
 
 .product-item:hover .product-info {
-    transform: translateY(0); 
+    transform: translateY(0);
 }
 
-#product-info-cat{
-    height: 30%; /* 區段的高度 */
+#product-info-cat {
+    height: 30%;
+    /* 區段的高度 */
 }
 
 
@@ -261,45 +317,52 @@ label {
     /* background-color: #ffffff; */
     /* border: 1px solid #FF770F; */
     position: relative;
-    
+
 }
 
 .product-down-section h6 {
     font-size: 1em;
-    color: #FF770F ; 
+    color: #FF770F;
     padding: 0;
     margin: 10px 0 15px 0;
     /* font-size: medium; */
-    
+
 }
 
 .product-down-section h5 {
     font-size: 0.8em;
-    color: #FF770F ; 
+    color: #FF770F;
     padding: 0;
     margin: 0 0 30px 0;
     /* font-size: small; */
     font-weight: bold;
-    
+
 }
 
 
 
 .scroll-button {
     margin: 0;
-    background-color: #ff770f5f; /* 預設淺灰色 */
-    color: white; /* 按鈕文字顏色 */
-    border: none; /* 去掉邊框 */
-    width: 3% ;
+    background-color: #ff770f5f;
+    /* 預設淺灰色 */
+    color: white;
+    /* 按鈕文字顏色 */
+    border: none;
+    /* 去掉邊框 */
+    width: 3%;
     aspect-ratio: 0.5;
     font-size: 1vw;
-    cursor: pointer; /* 鼠標指標變為手型 */
-    border-radius: 5px; /* 圓角邊框 */
-    transition: background-color 0.3s ease; /* 背景顏色過渡效果 */
+    cursor: pointer;
+    /* 鼠標指標變為手型 */
+    border-radius: 5px;
+    /* 圓角邊框 */
+    transition: background-color 0.3s ease;
+    /* 背景顏色過渡效果 */
 }
 
 .scroll-button:hover {
-    background-color: #d3d3d380; /* 懸停時變成更透明的灰色 */
+    background-color: #d3d3d380;
+    /* 懸停時變成更透明的灰色 */
 }
 
 
@@ -316,7 +379,7 @@ label {
 
 }
 
-#nameButton:hover{
+#nameButton:hover {
     transition: background-color 0.3s ease;
     background-color: #ffffff;
     color: #FF770F;
@@ -324,8 +387,10 @@ label {
 
 #text {
     font-size: 20px;
-    opacity: 0; /* 初始透明度為 0 */
-    transition: opacity 0.5s ease; /* 漸變效果 */
+    opacity: 0;
+    /* 初始透明度為 0 */
+    transition: opacity 0.5s ease;
+    /* 漸變效果 */
     font-weight: normal;
     margin: 0;
 }
@@ -334,7 +399,8 @@ label {
 #彩蛋計數器div {
     font-size: 20px;
 }
-#eggSection{
+
+#eggSection {
     display: flex;
     flex-direction: column;
 }
@@ -352,34 +418,43 @@ label {
 
 
 
-#item1{
+#item1 {
     height: 3em;
     width: 3em;
-    background-image: url('burger.gif'); /* 設置背景圖像 */
-    background-size: cover; /* 使背景圖像覆蓋整個區域 */
-    background-repeat: no-repeat; /* 不重複背景圖像 */
-    background-position: center; /* 將背景圖像置中 */
-    margin: 0; 
+    background-image: url('burger.gif');
+    /* 設置背景圖像 */
+    background-size: cover;
+    /* 使背景圖像覆蓋整個區域 */
+    background-repeat: no-repeat;
+    /* 不重複背景圖像 */
+    background-position: center;
+    /* 將背景圖像置中 */
+    margin: 0;
     cursor: pointer;
 }
 
-#zone1{
+#zone1 {
     width: 100%;
-    height:auto;
+    height: auto;
     aspect-ratio: 1;
     color: #FF770F;
-    background-image: url('catcry.gif'); /* 設置背景圖像 */
-    background-size: contain; /* 使背景圖像覆蓋整個區域 */
-    background-repeat: no-repeat; /* 不重複背景圖像 */
-    background-position: center; /* 將背景圖像置中 */
-    margin: 0; /* 去掉默認的邊距 */
+    background-image: url('catcry.gif');
+    /* 設置背景圖像 */
+    background-size: contain;
+    /* 使背景圖像覆蓋整個區域 */
+    background-repeat: no-repeat;
+    /* 不重複背景圖像 */
+    background-position: center;
+    /* 將背景圖像置中 */
+    margin: 0;
+    /* 去掉默認的邊距 */
 }
 
 /* 顧客回饋 */
 
 
 
-#egg{
+#egg {
     width: 1.8em;
     height: 2.4em;
     margin: 5px;
@@ -389,7 +464,7 @@ label {
     cursor: pointer;
 }
 
-#feedback-section{
+#feedback-section {
     display: flex;
     flex-direction: column;
 }
@@ -403,20 +478,27 @@ label {
 #feedback-container {
     display: flex;
     flex-direction: column;
-    overflow-y: auto; /* 開啟橫向滾動 */
-    scroll-behavior: smooth; /* 平滑捲動 */
-    width: 94%; /* 可以根據需要調整 */
-    height: 60vh; /* 高度固定 */
+    overflow-y: auto;
+    /* 開啟橫向滾動 */
+    scroll-behavior: smooth;
+    /* 平滑捲動 */
+    width: 94%;
+    /* 可以根據需要調整 */
+    height: 60vh;
+    /* 高度固定 */
     border-radius: 10px;
     margin: auto;
-    gap: 20px; /* 元素間距 */
+    gap: 20px;
+    /* 元素間距 */
     padding: 20px;
     background-color: #fffaf5;
-    scroll-snap-type: x mandatory; /* 吸附效果 */
+    scroll-snap-type: x mandatory;
+    /* 吸附效果 */
 }
 
 #feedback-container::-webkit-scrollbar {
-    display: none; /* 隱藏捲軸 */
+    display: none;
+    /* 隱藏捲軸 */
 }
 
 .feedback-item {
@@ -427,14 +509,14 @@ label {
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 3%;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     background-color: white;
 }
 
 .feedback-text {
     font-size: 1rem;
     color: #000000;
-    margin:0 0 2% 2%;
+    margin: 0 0 2% 2%;
     text-align: left;
 }
 
@@ -470,7 +552,7 @@ label {
 /* footer */
 footer {
     background-color: #d0b08a;
-    padding:1% 0 0 0;
+    padding: 1% 0 1% 0;
 }
 
 footer .icons {
@@ -482,31 +564,46 @@ footer .icons {
 }
 
 footer .icon img {
-    width: 50px; /* 圖標大小 */
-    height: 50px; /* 圖標大小 */
+    width: 30px;
+    /* 圖標大小 */
+    height: 30px;
+    /* 圖標大小 */
     transition: transform 0.3s;
 }
 
 footer .icon:hover img {
-    transform: scale(1.1); /* 滑鼠懸停效果 */
+    transform: scale(1.1);
+    /* 滑鼠懸停效果 */
 }
 
 footer p {
-    text-align: center; /* 只置中 p 元素的文本 */
-    margin: 10px;         /* 可選：去除默認的外邊距 */
-    color:#767676;
+    text-align: center;
+    margin: 0;
+    font-size: 0.5em;
+    color: #ffffff;
 }
+
+.icon-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
 
 /* 彈出視窗 */
 .popup {
-    display: block; /* 初始隱藏 */
+    display: block;
+    /* 初始隱藏 */
     position: fixed;
-    z-index: 1000; /* 確保在最上面 */
+    z-index: 1000;
+    /* 確保在最上面 */
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* 半透明背景 */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* 半透明背景 */
 }
 
 .popup-content {
@@ -529,7 +626,7 @@ footer p {
     cursor: pointer;
 }
 
-.close:hover { 
+.close:hover {
     color: black;
     text-decoration: none;
     cursor: pointer;
@@ -553,24 +650,25 @@ footer p {
 
 
 
-@media (aspect-ratio <= 1.5) {
+@media (aspect-ratio <=1.5) {
+
     /* CSS 規則 */
     section {
-        width: 100%; /* 高度設定 */
+        width: 100%;
+        /* 高度設定 */
         height: auto;
         padding: 0 3%;
         scroll-margin-top: calc(100vw / 8);
     }
 
-    footer {
-        
-    }
+    footer {}
 
     /* 產品展示櫃 */
     .product-gallery {
         scroll-snap-type: x mandatory;
         width: 100%;
     }
+
     .product-item {
         scroll-snap-align: start;
         flex: 0 0 100%;
@@ -585,15 +683,19 @@ footer p {
         font-size: 1em;
 
     }
+
     .scroll-button:hover {
-        background-color:#ff770f5f; /* 懸停時變成更透明的灰色 */
+        background-color: #ff770f5f;
+        /* 懸停時變成更透明的灰色 */
     }
+
     .right {
         position: absolute;
         bottom: 50%;
         right: -2.5%;
         z-index: 5;
     }
+
     .left {
         position: absolute;
         bottom: 50%;
@@ -609,103 +711,138 @@ footer p {
 
 
     .product-item:hover .product-info {
-        transform:translateY(100%); 
+        transform: translateY(100%);
     }
 
     .product-item.active .product-info {
-        transform: translateY(0); 
+        transform: translateY(0);
     }
 
     /* 首頁 */
     .content-container {
-        
+
         /* padding: 0 3%; */
     }
 
     /* header */
 
     header {
-        position: fixed; /* 固定在頁面上 */
-        top: 0; /* 距離頂部 0 像素 */
-        left: 0; /* 距離左邊 0 像素 */
-        width: 100%; /* 寬度 100% */
-        background-color: hsl(0, 0%, 100%); /* 背景顏色 */
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 添加陰影效果 */
-        z-index: 1000; /* 確保在其他元素之上 */
-        
+        position: fixed;
+        /* 固定在頁面上 */
+        top: 0;
+        /* 距離頂部 0 像素 */
+        left: 0;
+        /* 距離左邊 0 像素 */
+        width: 100%;
+        /* 寬度 100% */
+        background-color: hsl(0, 0%, 100%);
+        /* 背景顏色 */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        /* 添加陰影效果 */
+        z-index: 1000;
+        /* 確保在其他元素之上 */
+
     }
-    
+
     nav {
         display: flex;
-        justify-content: center; /* 將導航項目置中 */
+        justify-content: center;
+        /* 將導航項目置中 */
         aspect-ratio: 8;
     }
+
     /* 將列表項目水平排列 */
     nav ul {
-        list-style-type: none; /* 移除列表樣式 */
-        margin: 0; /* 移除預設邊距 */
-        padding: 0; /* 移除預設內邊距 */
-        display: flex; /* 使用彈性盒子 */
+        list-style-type: none;
+        /* 移除列表樣式 */
+        margin: 0;
+        /* 移除預設邊距 */
+        padding: 0;
+        /* 移除預設內邊距 */
+        display: flex;
+        /* 使用彈性盒子 */
     }
-    
+
     nav li {
-        
-        display: flex; /* 使用彈性盒子 */
-        align-items: center; /* 垂直置中 */
-        justify-content: center; /* 水平置中 */
+
+        display: flex;
+        /* 使用彈性盒子 */
+        align-items: center;
+        /* 垂直置中 */
+        justify-content: center;
+        /* 水平置中 */
 
 
-        height:auto; /* 每個項目的高度 */
-        
+        height: auto;
+        /* 每個項目的高度 */
+
     }
-    
+
     nav li:not(#地呱li) {
-        width: 22.5vw; /* 其他項目的寬度 */
+        width: 22.5vw;
+        /* 其他項目的寬度 */
     }
-    
+
     #地呱li {
-        width: 10vw; /* 大頭貼項目的寬度 */
-        display: flex; /* 使用彈性盒子 */
-        justify-content: center; /* 水平置中 */
-        align-items: center; /* 垂直置中 */
+        width: 10vw;
+        /* 大頭貼項目的寬度 */
+        display: flex;
+        /* 使用彈性盒子 */
+        justify-content: center;
+        /* 水平置中 */
+        align-items: center;
+        /* 垂直置中 */
         background-color: #FF770F;
     }
-    
+
     /* 設置鏈接樣式 */
     nav a {
-        display: flex; 
-        justify-content: center; /* 水平置中 */
-        align-items: center; /* 垂直置中 */
-        text-decoration: none; /* 移除下劃線 */
+        display: flex;
+        justify-content: center;
+        /* 水平置中 */
+        align-items: center;
+        /* 垂直置中 */
+        text-decoration: none;
+        /* 移除下劃線 */
         font-size: auto;
         font-weight: bold;
         color: #FF770F;
-        transition: background-color 0.3s ease; /* 背景顏色過渡效果 */
-        padding: 0; /* 移除內邊距 */
+        transition: background-color 0.3s ease;
+        /* 背景顏色過渡效果 */
+        padding: 0;
+        /* 移除內邊距 */
         width: 100%;
         height: 100%;
-        cursor: pointer; /* 設定游標為可點擊 */
+        cursor: pointer;
+        /* 設定游標為可點擊 */
     }
-    
+
     /* 滑鼠懸停時變更顏色 */
     nav a:hover:not(#地呱a) {
-        background-color: #FF770F; /* 滑鼠懸停時的背景顏色 */
-        color: #ffffff; /* 滑鼠懸停時的字體顏色 */
+        background-color: #FF770F;
+        /* 滑鼠懸停時的背景顏色 */
+        color: #ffffff;
+        /* 滑鼠懸停時的字體顏色 */
     }
-    
-    #地呱img
-     {
-        width: 8vw; /* 設定圖片的寬度 */
-        height: 8vw; /* 設定圖片的高度 */
-        border-radius:30%; /* 使圖片圓形 */
-        object-fit: cover; /* 確保圖片比例正常 */
-        transition: transform 0.3s; /* 平滑過渡 */
+
+    #地呱img {
+        width: 8vw;
+        /* 設定圖片的寬度 */
+        height: 8vw;
+        /* 設定圖片的高度 */
+        border-radius: 30%;
+        /* 使圖片圓形 */
+        object-fit: cover;
+        /* 確保圖片比例正常 */
+        transition: transform 0.3s;
+        /* 平滑過渡 */
         cursor: pointer;
     }
-    
+
     #地呱img.scale {
-        transform: scale(1.2); /* 放大效果 */
+        transform: scale(1.2);
+        /* 放大效果 */
     }
-    
+
 
 }
