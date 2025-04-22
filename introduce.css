@@ -150,6 +150,7 @@ nav a:hover:not(#地呱a) {
     transition: transform 0.3s;
     /* 平滑過渡 */
     cursor: pointer;
+    background-color: #ffffff;
 }
 
 #地呱img.scale {
@@ -405,6 +406,12 @@ label {
     flex-direction: column;
 }
 
+#eggSectionEgg:hover:not(.egg-used) {
+    background-color: rgba(255, 119, 15, 0.2);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
 /* 貪吃貓 */
 [draggable="true"] {
     /*
@@ -437,7 +444,7 @@ label {
     width: 100%;
     height: auto;
     aspect-ratio: 1;
-    color: #FF770F;
+    color: #ff770f;
     background-image: url('catcry.gif');
     /* 設置背景圖像 */
     background-size: contain;
@@ -520,7 +527,6 @@ label {
     text-align: left;
 }
 
-/* 蝦 */
 .feedback-img-container {
     display: flex;
     width: 100%;

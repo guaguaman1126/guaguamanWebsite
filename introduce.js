@@ -57,11 +57,13 @@ function updateEggCounter() {
 let eggSectionState = false;
 function showEggSection() {
     if (!eggSectionState) {
+        let eggSectionEgg = document.getElementById("eggSectionEgg");
         let eggSectionA = document.getElementById("eggSectionA");
         let eggSectionH2 = document.getElementById("eggSectionH2");
         let eggSectionP = document.getElementById("eggSectionP");
         eggSectionA.innerHTML = "彩蛋計數器";
-        eggSectionH2.innerHTML = "彩蛋計數器";
+        eggSectionEgg.innerHTML = "彩蛋"
+        eggSectionH2.innerHTML = "計數器";
         eggSectionP.innerHTML = "你解鎖了隱藏區域:彩蛋計數器! 這裡有好多個彩蛋等者你去尋找，找完有獎勵喔!!";
         eggSectionState = true;
     }
@@ -137,11 +139,8 @@ function appearingPlot(name) {
 //大頭貼彩蛋//
 let icon = document.getElementById('地呱img');
 let count = 0;
-let targetCount = 10;
+let targetCount = 3;
 function iconEgg() {
-    if(window.matchMedia("(aspect-ratio <= 1.5)").matches){
-        targetCount = 3;
-    }
     
     icon.addEventListener('click', function() {
         count++;
@@ -235,12 +234,25 @@ burger.addEventListener("click", ()=>{
     }
 })
 
-// 彩蛋彩蛋
+// 圖片彩蛋彩蛋
 const egg = document.getElementById("egg");
 egg.addEventListener("click", ()=>{
     egg.remove();
     unlockEgg();
 })
+
+// 字彩蛋彩蛋
+const eggSectionEgg = document.getElementById("eggSectionEgg");
+let eggSectionEggCount = 0;
+
+eggSectionEgg.addEventListener("click", () => {
+  if (eggSectionEggCount === 0) {
+    unlockEgg();
+    eggSectionEgg.classList.add("egg-used"); // 加上特殊 class
+    eggSectionEggCount++; // 不讓他重複觸發
+  }
+});
+
 
 
 // 獲取元素
