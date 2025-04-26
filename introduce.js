@@ -22,19 +22,19 @@ function scrollLeft1() {
 //手機上更換功能成點集顯示info
 
 document.querySelectorAll('.product-item').forEach(item => {
-    
+
     item.addEventListener('click', () => {
         let display = false;
-        if(!display){
+        if (!display) {
             // 切換 active 類
             item.classList.toggle('active');
             display = true;
-        }else{
+        } else {
             // 切換 active 類
-            item.classList.toggle('active',false);
+            item.classList.toggle('active', false);
             display = false;
         }
-        
+
     });
 });
 
@@ -73,9 +73,9 @@ function showEggSection() {
 
 //開頭問好
 function enterName() {
-    let nameButton= document.getElementById('nameButton');
+    let nameButton = document.getElementById('nameButton');
     let name = prompt("親愛的賓客您好，怎麼稱呼呢!!");
-    
+
     if (name !== null && name.trim() !== '') {
         alert("歡迎蒞臨呱呱人的小小天地，" + name + "！");
     } else {
@@ -86,48 +86,48 @@ function enterName() {
             name = prompt("??痾...這位賓客，請問要怎麼稱呼呢!???");
             if (name !== null && name.trim() !== '') {
                 alert("歡迎蒞臨呱呱人的小小天地，" + name + "！");
-                
+
             } else {
                 //耳包彩蛋
-                name="耳包君";
+                name = "耳包君";
                 unlockEgg();
                 alert("算了....你就叫耳包君吧。");
-                
+
             }
         }
     }
     nameButton.remove();
     appearingPlot(name);
-    
+
 }
 
 function appearingPlot(name) {
-    const text = "您好 " + name + "！我是呱呱人，這片仙境的管理人。非常高興能夠迎接貴賓來到我的 MYSTERY LAND！" + 
-    "//" + "作為一名正在學習網頁設計的大學生，我希望透過這個充滿新奇與互動的小天地，展示我獨特的創意。在這裡，您將發現各種可以互動的小設計，期待大家能夠多方探索，享受這段奇妙的旅程。" + 
-    "//" + 
-"此外，這裡還有我設計的徽章商品，如果你買了，我會很開心。再次歡迎您的到來，祝您在這片仙境中度過愉快的時光！"; // 要顯示的文字
+    const text = "您好 " + name + "！我是呱呱人，這片仙境的管理人。非常高興能夠迎接貴賓來到我的 MYSTERY LAND！" +
+        "//" + "作為一名正在學習網頁設計的大學生，我希望透過這個充滿新奇與互動的小天地，展示我獨特的創意。在這裡，您將發現各種可以互動的小設計，期待大家能夠多方探索，享受這段奇妙的旅程。" +
+        "//" +
+        "此外，這裡還有我設計的徽章商品，如果你買了，我會很開心。再次歡迎您的到來，祝您在這片仙境中度過愉快的時光！"; // 要顯示的文字
     const textContainer = document.getElementById('text');
     let index = 0;
 
     //如果是第一次彩蛋的話，彩蛋計數器顯示名子 
-    if(eggSectionState == false){
+    if (eggSectionState == false) {
         const eggCounterdiv = document.getElementById("eggSectionP");
-        eggCounterdiv.innerHTML = "太守規矩的乖寶寶(例如 \""+name+"\")，是不能進入這個區域的喔，嘻嘻。";
+        eggCounterdiv.innerHTML = "太守規矩的乖寶寶(例如 \"" + name + "\")，是不能進入這個區域的喔，嘻嘻。";
     }
 
     // 每隔 50 毫秒顯示一個字
     const interval = setInterval(() => {
         if (index < text.length) {
-            if(text[index]==="/"){
+            if (text[index] === "/") {
                 textContainer.innerHTML += "<br>";
                 textContainer.style.opacity = 1;
                 index++;
-            }else{
+            } else {
                 textContainer.innerHTML += text[index]; // 添加字母
                 textContainer.style.opacity = 1; // 逐漸顯示
                 index++;
             }
-            
+
         } else {
             clearInterval(interval); // 停止計時器
         }
@@ -141,10 +141,10 @@ let icon = document.getElementById('地呱img');
 let count = 0;
 let targetCount = 3;
 function iconEgg() {
-    
-    icon.addEventListener('click', function() {
+
+    icon.addEventListener('click', function () {
         count++;
-        if(count===targetCount){
+        if (count === targetCount) {
             let Boom = new Audio("Boom.mp3");
             Boom.play();
             icon.classList.add('scale');
@@ -152,12 +152,12 @@ function iconEgg() {
                 unlockEgg();
             }, 100);
 
-        }else if(count>targetCount){
+        } else if (count > targetCount) {
             let Boom = new Audio("Boom.mp3");
             Boom.play();
             icon.classList.add('scale');
 
-        }else{
+        } else {
             let Ahh = new Audio("Ahh.mp3");
             Ahh.play();
             icon.classList.add('scale');
@@ -167,7 +167,7 @@ function iconEgg() {
             icon.classList.remove('scale');
         }, 300); // 500ms後移除效果
     });
-    
+
 }
 iconEgg();// 初始化
 
@@ -184,59 +184,61 @@ draggableItems.forEach(item => {
 
 const dragZones = document.querySelectorAll(".dragZones");
 
-dragZones.forEach(zone =>{zone.addEventListener("dragover", (event) => {
-    event.preventDefault(); // 允許放下
+dragZones.forEach(zone => {
+    zone.addEventListener("dragover", (event) => {
+        event.preventDefault(); // 允許放下
     });
 })
 
-dragZones.forEach(zone =>{zone.addEventListener("drop", (event) => {
-    event.preventDefault(); // 防止默認行為
+dragZones.forEach(zone => {
+    zone.addEventListener("drop", (event) => {
+        event.preventDefault(); // 防止默認行為
 
-    // 獲取被拖動項目的 ID
-    const draggedItemId = event.dataTransfer.getData("text/plain");
-    const draggedItem = document.getElementById(draggedItemId);
+        // 獲取被拖動項目的 ID
+        const draggedItemId = event.dataTransfer.getData("text/plain");
+        const draggedItem = document.getElementById(draggedItemId);
 
-    //刪漢堡
-    draggedItem.remove();
-    
-    // 改gif
-    event.target.style.backgroundImage = 'url("catdance.gif")'; 
-    event.target.style.backgroundSize = '150%';
-    // 改台詞
-    const infoDiv = document.getElementById("product-info-cat");
-    const nameText = document.getElementById("貓彩蛋名稱區");
-    infoDiv.innerHTML = "<p>I'm happy!!</p>";
-    nameText.innerHTML = "開心的貓貓";
-    const sound = new Audio('happycat.mp3');
-    sound.play();
+        //刪漢堡
+        draggedItem.remove();
 
-    
+        // 改gif
+        event.target.style.backgroundImage = 'url("catdance.gif")';
+        event.target.style.backgroundSize = '150%';
+        // 改台詞
+        const infoDiv = document.getElementById("product-info-cat");
+        const nameText = document.getElementById("貓彩蛋名稱區");
+        infoDiv.innerHTML = "<p>I'm happy!!</p>";
+        nameText.innerHTML = "開心的貓貓";
+        const sound = new Audio('happycat.mp3');
+        sound.play();
 
-    setTimeout(()=>{
-        unlockEgg();
-    },100);
 
-    
 
-    // // 將被拖動的項目添加到拖放區域
-    // event.target.appendChild(draggedItem);
-   
+        setTimeout(() => {
+            unlockEgg();
+        }, 100);
+
+
+
+        // // 將被拖動的項目添加到拖放區域
+        // event.target.appendChild(draggedItem);
+
     });
 })
 
 // 亂點漢堡彩蛋
 let burgercount = 0
 const burger = document.getElementById("item1")
-burger.addEventListener("click", ()=>{
+burger.addEventListener("click", () => {
     burgercount++;
-    if(burgercount == 10){
+    if (burgercount == 10) {
         alert("白癡喔你要把它點爛了，用拖曳的啦(手機請長按再滑動)");
     }
 })
 
 // 圖片彩蛋彩蛋
 const egg = document.getElementById("egg");
-egg.addEventListener("click", ()=>{
+egg.addEventListener("click", () => {
     egg.remove();
     unlockEgg();
 })
@@ -246,11 +248,11 @@ const eggSectionEgg = document.getElementById("eggSectionEgg");
 let eggSectionEggCount = 0;
 
 eggSectionEgg.addEventListener("click", () => {
-  if (eggSectionEggCount === 0) {
-    unlockEgg();
-    eggSectionEgg.classList.add("egg-used"); // 加上特殊 class
-    eggSectionEggCount++; // 不讓他重複觸發
-  }
+    if (eggSectionEggCount === 0) {
+        unlockEgg();
+        eggSectionEgg.classList.add("egg-used"); // 加上特殊 class
+        eggSectionEggCount++; // 不讓他重複觸發
+    }
 });
 
 
@@ -263,16 +265,16 @@ const sureBtn = document.getElementById("sure");
 // 顯示彈出式廣告
 
 // 關閉彈出式廣告
-closeBtn.onclick = function() {
+closeBtn.onclick = function () {
     popup.style.display = "none";
 }
 
-sureBtn.onclick = function() {
+sureBtn.onclick = function () {
     popup.style.display = "none";
 }
 
 // 點擊彈出框以外的地方關閉彈出式廣告
-window.onclick = function(event) {
+window.onclick = function (event) {
     if (event.target === popup) {
         popup.style.display = "none";
     }
@@ -302,23 +304,23 @@ document.addEventListener('DOMContentLoaded', myFunction);
 const feedbackContainer = document.getElementById("feedback-container");
 
 fetch("https://script.google.com/macros/s/AKfycbz37dG7SnteIA9a_pEoTMmEgfgbSJISnA6WLm1eung9N__DAHF_hu-zbFudoZ5ZtmJWyg/exec")
-  .then(res => res.json())
-  .then(data => {
-    data.forEach(item => {
-      // ✅ 僅在「顧客回饋」存在且不是空字串時，才產生 div
-      if (item.顧客回饋) {
-        const div = document.createElement("div");
-        div.className = "feedback-item";
-        div.innerHTML = `
+    .then(res => res.json())
+    .then(data => {
+        data.forEach(item => {
+            // ✅ 僅在「顧客回饋」存在且不是空字串時，才產生 div
+            if (item.顧客回饋) {
+                const div = document.createElement("div");
+                div.className = "feedback-item";
+                div.innerHTML = `
           <p class="feedback-name">${item.暱稱}</p>
           <p class="feedback-text">${item.顧客回饋}</p>
           <img class="feedback-img" src="${convertOpenIdToDirectLink(item.商品照)}" alt="顧客商品照" onerror="this.src='Glogo.png'">
         `;
-        feedbackContainer.insertBefore(div, feedbackContainer.firstChild);
-      }
-    });
-  })
-  .catch(err => console.error("留言載入失敗：", err));
+                feedbackContainer.insertBefore(div, feedbackContainer.firstChild);
+            }
+        });
+    })
+    .catch(err => console.error("留言載入失敗：", err));
 
 
 
@@ -326,10 +328,43 @@ fetch("https://script.google.com/macros/s/AKfycbz37dG7SnteIA9a_pEoTMmEgfgbSJISnA
 function convertOpenIdToDirectLink(originalUrl) {
     const match = originalUrl.match(/id=([a-zA-Z0-9_-]+)/);
     if (match && match[1]) {
-      const fileId = match[1];
-      return `https://lh3.googleusercontent.com/d/${fileId}`;
+        const fileId = match[1];
+        return `https://lh3.googleusercontent.com/d/${fileId}`;
     } else {
-      console.warn("❗ 無法擷取圖片 ID：", originalUrl);
+        console.warn("❗ 無法擷取圖片 ID：", originalUrl);
     }
 }
+
+
+// 點擊 feedback-img 放大顯示，直接插到父元素後面
+
+document.addEventListener('click', function (e) {
+    if (e.target.classList.contains('feedback-img')) {
+        const imgSrc = e.target.src; // 取得圖片來源
+        const parent = e.target.parentElement; // 小圖的父元素
+
+        // 檢查父元素是否已經有放大圖，如果有先移除
+        const existingZoom = parent.querySelector('.feedback-zoomed-img');
+        
+        if (existingZoom) {
+            existingZoom.remove();
+            e.target.style.border = 'none';
+        } else {
+            
+            // 建立放大版圖片元素
+            const zoomImg = document.createElement('img');
+            zoomImg.src = imgSrc;
+            zoomImg.className = 'feedback-zoomed-img';
+
+            // 插入到父元素之後
+            parent.appendChild(zoomImg);
+
+            // 給被點擊的小圖加上灰色邊框
+            e.target.style.border = '2px solid gray';
+        
+        }
+
+
+    }
+});
 
