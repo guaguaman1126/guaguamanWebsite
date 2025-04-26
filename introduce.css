@@ -538,7 +538,7 @@ label {
 }
 
 .feedback-img {
-    width: 10%;
+    width: 20%;
     aspect-ratio: 1;
     margin: 0 5% 0 2%;
     object-fit: contain;
