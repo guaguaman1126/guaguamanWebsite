@@ -495,9 +495,9 @@ label {
     /* 高度固定 */
     border-radius: 10px;
     margin: auto;
-    gap: 20px;
+    gap: 1%;
     /* 元素間距 */
-    padding: 20px;
+    padding: 1%;
     background-color: #fffaf5;
     scroll-snap-type: x mandatory;
     /* 吸附效果 */
