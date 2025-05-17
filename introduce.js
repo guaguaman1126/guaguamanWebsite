@@ -52,6 +52,13 @@ function updateEggCounter() {
     eggCount++;  // 增加計數
     eggCounterdiv.innerHTML = "目前發現了" + eggCount + "個彩蛋!!";  // 更新顯示
     alert("恭喜你找到了一個彩蛋");
+
+    if(eggCount == 4){
+        alert("你找到了一定數量的彩蛋，解鎖優惠代碼8888");
+        let eggSectionP = document.getElementById("eggSectionP");
+        eggSectionP.innerHTML += "<br>您已解鎖優惠代碼 8888";
+
+    }
 }
 //顯示彩蛋計數器
 let eggSectionState = false;
@@ -345,12 +352,12 @@ document.addEventListener('click', function (e) {
 
         // 檢查父元素是否已經有放大圖，如果有先移除
         const existingZoom = parent.querySelector('.feedback-zoomed-img');
-        
+
         if (existingZoom) {
             existingZoom.remove();
             e.target.style.border = 'none';
         } else {
-            
+
             // 建立放大版圖片元素
             const zoomImg = document.createElement('img');
             zoomImg.src = imgSrc;
@@ -361,10 +368,53 @@ document.addEventListener('click', function (e) {
 
             // 給被點擊的小圖加上灰色邊框
             e.target.style.border = '2px solid gray';
-        
+
         }
 
 
     }
 });
+
+
+//按鈕彈跳
+const btn = document.getElementById('nameButton');
+const container = btn.parentElement;
+
+let posX = 100;
+let posY = 100;
+
+const speed = 2;
+let angle = Math.random() * 2 * Math.PI; // 隨機角度 (0 到 2π)
+let velocityX = speed * Math.cos(angle);
+let velocityY = speed * Math.sin(angle);
+
+btn.style.position = 'absolute'; // 確保能移動
+
+function moveButton() {
+  const btnWidth = btn.offsetWidth;
+  const btnHeight = btn.offsetHeight;
+  const containerWidth = container.clientWidth;
+  const containerHeight = container.clientHeight;
+
+  posX += velocityX;
+  posY += velocityY;
+
+  // 撞牆反彈（保角度反射）
+  if (posX + btnWidth >= containerWidth || posX <= 0) {
+    velocityX = -velocityX;
+    posX = Math.max(0, Math.min(posX, containerWidth - btnWidth));
+  }
+
+  if (posY + btnHeight >= containerHeight || posY <= 0) {
+    velocityY = -velocityY;
+    posY = Math.max(0, Math.min(posY, containerHeight - btnHeight));
+  }
+
+  btn.style.left = `${posX}px`;
+  btn.style.top = `${posY}px`;
+
+  requestAnimationFrame(moveButton);
+}
+
+moveButton();
 
