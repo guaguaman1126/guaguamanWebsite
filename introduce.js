@@ -307,39 +307,49 @@ window.addEventListener('resize', myFunction);
 // 初始執行
 document.addEventListener('DOMContentLoaded', myFunction);
 
-//抓顧客回饋下來
+/// 抓顧客回饋下來
 const feedbackContainer = document.getElementById("feedback-container");
 
 fetch("https://script.google.com/macros/s/AKfycbz37dG7SnteIA9a_pEoTMmEgfgbSJISnA6WLm1eung9N__DAHF_hu-zbFudoZ5ZtmJWyg/exec")
-    .then(res => res.json())
-    .then(data => {
-        data.forEach(item => {
-            // ✅ 僅在「顧客回饋」存在且不是空字串時，才產生 div
-            if (item.顧客回饋) {
-                const div = document.createElement("div");
-                div.className = "feedback-item";
-                div.innerHTML = `
+  .then(res => res.json())
+  .then(data => {
+    const feedbacks = data.feedbacks; // ✅ 取出 feedbacks 陣列
+    feedbacks.forEach(item => {
+      if (item.顧客回饋) {
+        const div = document.createElement("div");
+        div.className = "feedback-item";
+        div.innerHTML = `
           <p class="feedback-name">${item.暱稱}</p>
           <p class="feedback-text">${item.顧客回饋}</p>
           <img class="feedback-img" src="${convertOpenIdToDirectLink(item.商品照)}" alt="顧客商品照" onerror="this.src='Glogo.png'">
         `;
-                feedbackContainer.insertBefore(div, feedbackContainer.firstChild);
-            }
-        });
-    })
-    .catch(err => console.error("留言載入失敗：", err));
+        feedbackContainer.insertBefore(div, feedbackContainer.firstChild);
+      }
+    });
+  })
+  .catch(err => console.error("留言載入失敗：", err));
 
 
 
 //轉圖片網址變成顯示網址
 function convertOpenIdToDirectLink(originalUrl) {
-    const match = originalUrl.match(/id=([a-zA-Z0-9_-]+)/);
-    if (match && match[1]) {
-        const fileId = match[1];
-        return `https://lh3.googleusercontent.com/d/${fileId}`;
-    } else {
-        console.warn("❗ 無法擷取圖片 ID：", originalUrl);
+  // 原始邏輯：支援 id=XXX
+  const match = originalUrl.match(/id=([a-zA-Z0-9_-]+)/);
+  if (match && match[1]) {
+    const fileId = match[1];
+    return `https://lh3.googleusercontent.com/d/${fileId}`;
+  } 
+  // 新增邏輯：支援 /file/d/XXX/
+  else if (originalUrl.includes("/file/d/")) {
+    const altMatch = originalUrl.match(/file\/d\/([a-zA-Z0-9_-]+)/);
+    if (altMatch && altMatch[1]) {
+      const fileId = altMatch[1];
+      return `https://lh3.googleusercontent.com/d/${fileId}`;
     }
+  }
+
+  console.warn("❗ 無法擷取圖片 ID：", originalUrl);
+  return undefined;
 }
 
 
@@ -417,4 +427,36 @@ function moveButton() {
 }
 
 moveButton();
+
+
+// 資料庫抓圖片下來
+const scriptURL = "https://script.google.com/macros/s/AKfycbz37dG7SnteIA9a_pEoTMmEgfgbSJISnA6WLm1eung9N__DAHF_hu-zbFudoZ5ZtmJWyg/exec";
+
+fetch(scriptURL)
+  .then(res => res.json())
+  .then(data => {
+    const gallery = document.getElementById("productGallery");
+
+    data.products.forEach(item => {
+      const div = document.createElement("div");
+      div.className = "product-item";
+      div.innerHTML = `
+        <div class="product-up-section">
+          <img src="${convertOpenIdToDirectLink(item.圖片)}" alt="${item.名稱}" oncontextmenu="return false">
+          <div class="product-info">
+            ${item.文案.split('\n').map(line => `<p>${line}</p>`).join('')}
+          </div>
+        </div>
+        <div class="product-down-section">
+          <h6>${item.名稱}</h6>
+          <h5>TWD ${item.價格}</h5>
+        </div>
+      `;
+      gallery.appendChild(div);
+    });
+  })
+  .catch(err => console.error("載入產品資料失敗：", err));
+
+
+
 
