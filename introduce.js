@@ -179,59 +179,55 @@ function iconEgg() {
 iconEgg();// 初始化
 
 
-// 拖曳物品彩蛋
-const draggableItems = document.querySelectorAll('.draggableItems');
+// 貓貓拖曳物品彩蛋
+// const draggableItems = document.querySelectorAll('.draggableItems');
 
-draggableItems.forEach(item => {
-    item.addEventListener("dragstart", (event) => {
-        // 設置被拖動項目的 ID
-        event.dataTransfer.setData("text/plain", event.target.id);
-    });
-});
+// draggableItems.forEach(item => {
+//     item.addEventListener("dragstart", (event) => {
+//         // 設置被拖動項目的 ID
+//         event.dataTransfer.setData("text/plain", event.target.id);
+//     });
+// });
 
-const dragZones = document.querySelectorAll(".dragZones");
+// const dragZones = document.querySelectorAll(".dragZones");
 
-dragZones.forEach(zone => {
-    zone.addEventListener("dragover", (event) => {
-        event.preventDefault(); // 允許放下
-    });
-})
+// dragZones.forEach(zone => {
+//     zone.addEventListener("dragover", (event) => {
+//         event.preventDefault(); // 允許放下
+//     });
+// })
 
-dragZones.forEach(zone => {
-    zone.addEventListener("drop", (event) => {
-        event.preventDefault(); // 防止默認行為
+// dragZones.forEach(zone => {
+//     zone.addEventListener("drop", (event) => {
+//         event.preventDefault(); // 防止默認行為
 
-        // 獲取被拖動項目的 ID
-        const draggedItemId = event.dataTransfer.getData("text/plain");
-        const draggedItem = document.getElementById(draggedItemId);
+//         // 獲取被拖動項目的 ID
+//         const draggedItemId = event.dataTransfer.getData("text/plain");
+//         const draggedItem = document.getElementById(draggedItemId);
 
-        //刪漢堡
-        draggedItem.remove();
+//         //刪漢堡
+//         draggedItem.remove();
 
-        // 改gif
-        event.target.style.backgroundImage = 'url("catdance.gif")';
-        event.target.style.backgroundSize = '150%';
-        // 改台詞
-        const infoDiv = document.getElementById("product-info-cat");
-        const nameText = document.getElementById("貓彩蛋名稱區");
-        infoDiv.innerHTML = "<p>I'm happy!!</p>";
-        nameText.innerHTML = "開心的貓貓";
-        const sound = new Audio('happycat.mp3');
-        sound.play();
-
-
-
-        setTimeout(() => {
-            unlockEgg();
-        }, 100);
+//         // 改gif
+//         event.target.style.backgroundImage = 'url("catdance.gif")';
+//         event.target.style.backgroundSize = '150%';
+//         // 改台詞
+//         const infoDiv = document.getElementById("product-info-cat");
+//         const nameText = document.getElementById("貓彩蛋名稱區");
+//         infoDiv.innerHTML = "<p>I'm happy!!</p>";
+//         nameText.innerHTML = "開心的貓貓";
+//         const sound = new Audio('happycat.mp3');
+//         sound.play();
 
 
 
-        // // 將被拖動的項目添加到拖放區域
-        // event.target.appendChild(draggedItem);
+//         setTimeout(() => {
+//             unlockEgg();
+//         }, 100);
 
-    });
-})
+
+//     });
+// })
 
 // 亂點漢堡彩蛋
 let burgercount = 0
@@ -429,7 +425,7 @@ function moveButton() {
 moveButton();
 
 
-// 資料庫抓圖片下來
+// 插入產品資訊
 const scriptURL = "https://script.google.com/macros/s/AKfycbz37dG7SnteIA9a_pEoTMmEgfgbSJISnA6WLm1eung9N__DAHF_hu-zbFudoZ5ZtmJWyg/exec";
 
 fetch(scriptURL)
@@ -437,6 +433,7 @@ fetch(scriptURL)
   .then(data => {
     const gallery = document.getElementById("productGallery");
 
+    // 插入產品資料
     data.products.forEach(item => {
       const div = document.createElement("div");
       div.className = "product-item";
@@ -454,8 +451,71 @@ fetch(scriptURL)
       `;
       gallery.appendChild(div);
     });
+
+    // 插入固定彩蛋貓貓卡片在最後面
+    const catCard = document.createElement("div");
+    catCard.className = "product-item";
+    catCard.innerHTML = `
+      <div class="product-up-section">
+        <div id="zone1" class="dragZones"></div>
+        <div class="product-info" id="product-info-cat">
+          <p>：沃很餓，我要選布!!</p>
+          <p>請給這可憐的貓貓一點食物。</p>
+        </div>
+      </div>
+      <div class="product-down-section">
+        <h6 id="貓彩蛋名稱區">肚子餓的貓貓???</h6>
+        <h5>TWD 非賣品</h5>
+      </div>
+    `;
+    gallery.appendChild(catCard);
+
+    // 綁定 drag 行為至 draggableItems
+    const draggableItems = document.querySelectorAll('.draggableItems');
+    draggableItems.forEach(item => {
+      item.addEventListener("dragstart", (event) => {
+        event.dataTransfer.setData("text/plain", event.target.id);
+      });
+    });
+
+    // 綁定 drop 行為至 zone1
+    const zone1 = document.getElementById("zone1");
+    if (zone1) {
+      zone1.addEventListener("dragover", event => {
+        event.preventDefault();
+      });
+
+      zone1.addEventListener("drop", event => {
+        event.preventDefault();
+        const draggedItemId = event.dataTransfer.getData("text/plain");
+        const draggedItem = document.getElementById(draggedItemId);
+
+        if (draggedItem) draggedItem.remove();
+
+        // 改 gif
+        zone1.style.backgroundImage = 'url("catdance.gif")';
+        zone1.style.backgroundSize = '150%';
+
+        // 改台詞
+        const infoDiv = document.getElementById("product-info-cat");
+        const nameText = document.getElementById("貓彩蛋名稱區");
+        if (infoDiv) infoDiv.innerHTML = "<p>I'm happy!!</p>";
+        if (nameText) nameText.innerHTML = "開心的貓貓";
+
+        const sound = new Audio('happycat.mp3');
+        sound.play();
+
+        setTimeout(() => {
+          if (typeof unlockEgg === 'function') {
+            unlockEgg();
+          }
+        }, 100);
+      });
+    }
   })
   .catch(err => console.error("載入產品資料失敗：", err));
+
+
 
 
 
