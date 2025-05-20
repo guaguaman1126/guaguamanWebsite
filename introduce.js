@@ -19,24 +19,24 @@ function scrollLeft1() {
     });
 }
 
-//手機上更換功能成點集顯示info
+// 手機上更換功能成點集顯示info
 
-document.querySelectorAll('.product-item').forEach(item => {
+// document.querySelectorAll('.product-item').forEach(item => {
 
-    item.addEventListener('click', () => {
-        let display = false;
-        if (!display) {
-            // 切換 active 類
-            item.classList.toggle('active');
-            display = true;
-        } else {
-            // 切換 active 類
-            item.classList.toggle('active', false);
-            display = false;
-        }
+//     item.addEventListener('click', () => {
+//         let display = false;
+//         if (!display) {
+//             // 切換 active 類
+//             item.classList.toggle('active');
+//             display = true;
+//         } else {
+//             // 切換 active 類
+//             item.classList.toggle('active', false);
+//             display = false;
+//         }
 
-    });
-});
+//     });
+// });
 
 // 統整的彩蛋解鎖函數
 function unlockEgg() {
@@ -428,29 +428,41 @@ moveButton();
 // 插入產品資訊
 const scriptURL = "https://script.google.com/macros/s/AKfycbz37dG7SnteIA9a_pEoTMmEgfgbSJISnA6WLm1eung9N__DAHF_hu-zbFudoZ5ZtmJWyg/exec";
 
+function bindProductInfoToggle() {
+  document.querySelectorAll('.product-item').forEach(item => {
+    item.addEventListener('click', () => {
+      item.classList.toggle('active');
+    });
+  });
+}
+
+function renderProducts(products, gallery) {
+  products.forEach(item => {
+    const div = document.createElement("div");
+    div.className = "product-item";
+    div.innerHTML = `
+      <div class="product-up-section">
+        <img src="${convertOpenIdToDirectLink(item.圖片)}" alt="${item.名稱}" oncontextmenu="return false">
+        <div class="product-info">
+          ${item.文案.split('\n').map(line => `<p>${line}</p>`).join('')}
+        </div>
+      </div>
+      <div class="product-down-section">
+        <h6>${item.名稱}</h6>
+        <h5>TWD ${item.價格}</h5>
+      </div>
+    `;
+    gallery.appendChild(div);
+  });
+}
+
 fetch(scriptURL)
   .then(res => res.json())
   .then(data => {
     const gallery = document.getElementById("productGallery");
 
     // 插入產品資料
-    data.products.forEach(item => {
-      const div = document.createElement("div");
-      div.className = "product-item";
-      div.innerHTML = `
-        <div class="product-up-section">
-          <img src="${convertOpenIdToDirectLink(item.圖片)}" alt="${item.名稱}" oncontextmenu="return false">
-          <div class="product-info">
-            ${item.文案.split('\n').map(line => `<p>${line}</p>`).join('')}
-          </div>
-        </div>
-        <div class="product-down-section">
-          <h6>${item.名稱}</h6>
-          <h5>TWD ${item.價格}</h5>
-        </div>
-      `;
-      gallery.appendChild(div);
-    });
+    renderProducts(data.products, gallery);
 
     // 插入固定彩蛋貓貓卡片在最後面
     const catCard = document.createElement("div");
@@ -469,6 +481,9 @@ fetch(scriptURL)
       </div>
     `;
     gallery.appendChild(catCard);
+
+    // 綁定手機點擊展示 info 功能
+    bindProductInfoToggle();
 
     // 綁定 drag 行為至 draggableItems
     const draggableItems = document.querySelectorAll('.draggableItems');
@@ -514,6 +529,7 @@ fetch(scriptURL)
     }
   })
   .catch(err => console.error("載入產品資料失敗：", err));
+
 
 
 
