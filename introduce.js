@@ -436,23 +436,94 @@ function bindProductInfoToggle() {
   });
 }
 
+function createProductElement(item) {
+  const div = document.createElement("div");
+  div.className = "product-item";
+
+  const upSection = document.createElement("div");
+  upSection.className = "product-up-section";
+  const img = document.createElement("img");
+  img.src = convertOpenIdToDirectLink(item.圖片);
+  img.alt = item.名稱;
+  img.setAttribute("oncontextmenu", "return false");
+
+  const info = document.createElement("div");
+  info.className = "product-info";
+  item.文案.split('\n').forEach(line => {
+    const p = document.createElement("p");
+    p.textContent = line;
+    info.appendChild(p);
+  });
+
+  upSection.appendChild(img);
+  upSection.appendChild(info);
+
+  const downSection = document.createElement("div");
+  downSection.className = "product-down-section";
+  const name = document.createElement("h6");
+  name.textContent = item.名稱;
+  const price = document.createElement("h5");
+  price.textContent = `TWD ${item.價格}`;
+
+  downSection.appendChild(name);
+  downSection.appendChild(price);
+
+  div.appendChild(upSection);
+  div.appendChild(downSection);
+
+  return div;
+}
+
+function createCatCard() {
+  const catCard = document.createElement("div");
+  catCard.className = "product-item";
+  catCard.innerHTML = `
+    <div class="product-up-section">
+      <div id="zone1" class="dragZones"></div>
+      <div class="product-info" id="product-info-cat">
+        <p>：沃很餓，我要選布!!</p>
+        <p>請給這可憐的貓貓一點食物。</p>
+      </div>
+    </div>
+    <div class="product-down-section">
+      <h6 id="貓彩蛋名稱區">肚子餓的貓貓???</h6>
+      <h5>TWD 非賣品</h5>
+    </div>
+  `;
+
+  const zone1 = catCard.querySelector("#zone1");
+  if (zone1) {
+    zone1.addEventListener("dragover", event => event.preventDefault());
+    zone1.addEventListener("drop", event => {
+      event.preventDefault();
+      const draggedItemId = event.dataTransfer.getData("text/plain");
+      const draggedItem = document.getElementById(draggedItemId);
+      if (draggedItem) draggedItem.remove();
+
+      zone1.style.backgroundImage = 'url("catdance.gif")';
+      zone1.style.backgroundSize = '150%';
+
+      const infoDiv = catCard.querySelector("#product-info-cat");
+      const nameText = catCard.querySelector("#貓彩蛋名稱區");
+      if (infoDiv) infoDiv.innerHTML = "<p>I'm happy!!</p>";
+      if (nameText) nameText.innerHTML = "開心的貓貓";
+
+      const sound = new Audio('happycat.mp3');
+      sound.play();
+
+      setTimeout(() => {
+        if (typeof unlockEgg === 'function') unlockEgg();
+      }, 100);
+    });
+  }
+
+  return catCard;
+}
+
 function renderProducts(products, gallery) {
   products.forEach(item => {
-    const div = document.createElement("div");
-    div.className = "product-item";
-    div.innerHTML = `
-      <div class="product-up-section">
-        <img src="${convertOpenIdToDirectLink(item.圖片)}" alt="${item.名稱}" oncontextmenu="return false">
-        <div class="product-info">
-          ${item.文案.split('\n').map(line => `<p>${line}</p>`).join('')}
-        </div>
-      </div>
-      <div class="product-down-section">
-        <h6>${item.名稱}</h6>
-        <h5>TWD ${item.價格}</h5>
-      </div>
-    `;
-    gallery.appendChild(div);
+    const productElement = createProductElement(item);
+    gallery.appendChild(productElement);
   });
 }
 
@@ -461,72 +532,16 @@ fetch(scriptURL)
   .then(data => {
     const gallery = document.getElementById("productGallery");
 
-    // 插入產品資料
     renderProducts(data.products, gallery);
+    gallery.appendChild(createCatCard());
 
-    // 插入固定彩蛋貓貓卡片在最後面
-    const catCard = document.createElement("div");
-    catCard.className = "product-item";
-    catCard.innerHTML = `
-      <div class="product-up-section">
-        <div id="zone1" class="dragZones"></div>
-        <div class="product-info" id="product-info-cat">
-          <p>：沃很餓，我要選布!!</p>
-          <p>請給這可憐的貓貓一點食物。</p>
-        </div>
-      </div>
-      <div class="product-down-section">
-        <h6 id="貓彩蛋名稱區">肚子餓的貓貓???</h6>
-        <h5>TWD 非賣品</h5>
-      </div>
-    `;
-    gallery.appendChild(catCard);
-
-    // 綁定手機點擊展示 info 功能
     bindProductInfoToggle();
 
-    // 綁定 drag 行為至 draggableItems
-    const draggableItems = document.querySelectorAll('.draggableItems');
-    draggableItems.forEach(item => {
+    document.querySelectorAll('.draggableItems').forEach(item => {
       item.addEventListener("dragstart", (event) => {
         event.dataTransfer.setData("text/plain", event.target.id);
       });
     });
-
-    // 綁定 drop 行為至 zone1
-    const zone1 = document.getElementById("zone1");
-    if (zone1) {
-      zone1.addEventListener("dragover", event => {
-        event.preventDefault();
-      });
-
-      zone1.addEventListener("drop", event => {
-        event.preventDefault();
-        const draggedItemId = event.dataTransfer.getData("text/plain");
-        const draggedItem = document.getElementById(draggedItemId);
-
-        if (draggedItem) draggedItem.remove();
-
-        // 改 gif
-        zone1.style.backgroundImage = 'url("catdance.gif")';
-        zone1.style.backgroundSize = '150%';
-
-        // 改台詞
-        const infoDiv = document.getElementById("product-info-cat");
-        const nameText = document.getElementById("貓彩蛋名稱區");
-        if (infoDiv) infoDiv.innerHTML = "<p>I'm happy!!</p>";
-        if (nameText) nameText.innerHTML = "開心的貓貓";
-
-        const sound = new Audio('happycat.mp3');
-        sound.play();
-
-        setTimeout(() => {
-          if (typeof unlockEgg === 'function') {
-            unlockEgg();
-          }
-        }, 100);
-      });
-    }
   })
   .catch(err => console.error("載入產品資料失敗：", err));
 
