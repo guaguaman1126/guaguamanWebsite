@@ -53,11 +53,22 @@ function updateEggCounter() {
   eggCounterdiv.innerHTML = "目前發現了" + eggCount + "個彩蛋!!";  // 更新顯示
   alert("恭喜你找到了一個彩蛋");
 
-  if (eggCount == 4) {
+  if (eggCount === 4) {
     alert("你找到了一定數量的彩蛋，解鎖優惠代碼8888");
-    let eggSectionP = document.getElementById("eggSectionP");
+
+    const eggSectionP = document.getElementById("eggSectionP");
     eggSectionP.innerHTML += "<br>您已解鎖優惠代碼 8888";
 
+    // 🔽 插入圖片到 #eggSection 裡
+    const eggSection = document.getElementById("eggSection");
+    const img = document.createElement("img");
+    img.src = "愛你.jpg"; // ← 替換為你的圖片路徑
+    img.alt = "解鎖優惠圖片";
+    img.style.maxWidth = "90%";     // 最多不超過 section 寬度的 90%
+    img.style.height = "auto";      // 自動高度，保持圖片原始比例
+    img.style.display = "block";    // 讓圖片在容器內置中
+    img.style.margin = "20px auto";
+    eggSection.appendChild(img);
   }
 }
 //顯示彩蛋計數器
