@@ -437,6 +437,13 @@ label {
     transition: background-color 0.3s ease;
 }
 
+#eggSection-img {
+    width: 40%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
 /* 貪吃貓 */
 [draggable="true"] {
     /*
@@ -880,6 +887,11 @@ footer p {
     #地呱img.scale {
         transform: scale(1.2);
         /* 放大效果 */
+    }
+
+    #eggSection-img {
+        width: 90%;
+        
     }
 
 

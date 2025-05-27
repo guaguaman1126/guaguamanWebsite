@@ -60,15 +60,9 @@ function updateEggCounter() {
     eggSectionP.innerHTML += "<br>您已解鎖優惠代碼 8888";
 
     // 🔽 插入圖片到 #eggSection 裡
-    const eggSection = document.getElementById("eggSection");
-    const img = document.createElement("img");
+    const img =  document.getElementById("eggSection-img");
     img.src = "愛你.jpg"; // ← 替換為你的圖片路徑
     img.alt = "解鎖優惠圖片";
-    img.style.maxWidth = "90%";     // 最多不超過 section 寬度的 90%
-    img.style.height = "auto";      // 自動高度，保持圖片原始比例
-    img.style.display = "block";    // 讓圖片在容器內置中
-    img.style.margin = "20px auto";
-    eggSection.appendChild(img);
   }
 }
 //顯示彩蛋計數器
@@ -79,10 +73,12 @@ function showEggSection() {
     let eggSectionA = document.getElementById("eggSectionA");
     let eggSectionH2 = document.getElementById("eggSectionH2");
     let eggSectionP = document.getElementById("eggSectionP");
+    const img =  document.getElementById("eggSection-img");
     eggSectionA.innerHTML = "彩蛋計數器";
     eggSectionEgg.innerHTML = "彩蛋"
     eggSectionH2.innerHTML = "計數器";
     eggSectionP.innerHTML = "你解鎖了隱藏區域:彩蛋計數器! 這裡有好多個彩蛋等者你去尋找，找完有獎勵喔!!";
+    img.src = "shockcat.jpeg"
     eggSectionState = true;
   }
 }
