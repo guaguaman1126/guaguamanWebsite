@@ -51,19 +51,26 @@ let eggCounterdiv = document.getElementById('彩蛋計數器div');
 function updateEggCounter() {
   eggCount++;  // 增加計數
   eggCounterdiv.innerHTML = "目前發現了" + eggCount + "個彩蛋!!";  // 更新顯示
-  alert("恭喜你找到了一個彩蛋");
+  let Boom = new Audio("Boom.mp3");
+  Boom.play();
+  setTimeout(() => {
+    alert("恭喜你找到了一個彩蛋");
 
-  if (eggCount === 4) {
+    if (eggCount === 4) {
     alert("你找到了一定數量的彩蛋，解鎖優惠代碼8888");
 
     const eggSectionP = document.getElementById("eggSectionP");
     eggSectionP.innerHTML += "<br>您已解鎖優惠代碼 8888";
 
     // 🔽 插入圖片到 #eggSection 裡
-    const img =  document.getElementById("eggSection-img");
+    const img = document.getElementById("eggSection-img");
     img.src = "愛你.jpg"; // ← 替換為你的圖片路徑
     img.alt = "解鎖優惠圖片";
   }
+  }, 100);
+
+
+  
 }
 //顯示彩蛋計數器
 let eggSectionState = false;
@@ -73,7 +80,7 @@ function showEggSection() {
     let eggSectionA = document.getElementById("eggSectionA");
     let eggSectionH2 = document.getElementById("eggSectionH2");
     let eggSectionP = document.getElementById("eggSectionP");
-    const img =  document.getElementById("eggSection-img");
+    const img = document.getElementById("eggSection-img");
     eggSectionA.innerHTML = "彩蛋計數器";
     eggSectionEgg.innerHTML = "彩蛋"
     eggSectionH2.innerHTML = "計數器";
@@ -105,7 +112,10 @@ function enterName() {
         //耳包彩蛋
         name = "耳包君";
         unlockEgg();
-        alert("算了....你就叫耳包君吧。");
+        setTimeout(() => {
+          alert("算了....你就叫耳包君吧。");
+        }, 100);
+        
 
       }
     }
@@ -117,9 +127,9 @@ function enterName() {
 
 function appearingPlot(name) {
   const text = "您好 " + name + "！我是呱呱人，這片仙境的管理人。非常高興能夠迎接貴賓來到我的 MYSTERY LAND！" +
-    "//" + "作為一名正在學習網頁設計的大學生，我希望透過這個充滿新奇與互動的小天地，展示我獨特的創意。在這裡，您將發現各種可以互動的小設計，期待大家能夠多方探索，享受這段奇妙的旅程。" +
+    "//" + "作為一名正在被網頁設計的大學生，我希望透過這個新奇與互動的小天地，展示獨特的創意。在這裡，您將發現一些可以互動的小設計，期待大家能夠多方探索，享受這段奇妙的旅程。" +
     "//" +
-    "此外，這裡還有我設計的徽章商品，如果你買了，我會很開心。再次歡迎您的到來，祝您在這片仙境中度過愉快的時光！"; // 要顯示的文字
+    "此外，這裡還有我設計的徽章商品，買了我會很開心。再次歡迎您的到來，祝您在這裡度過愉快的時光！"; // 要顯示的文字
   const textContainer = document.getElementById('text');
   let index = 0;
 
@@ -159,8 +169,8 @@ function iconEgg() {
   icon.addEventListener('click', function () {
     count++;
     if (count === targetCount) {
-      let Boom = new Audio("Boom.mp3");
-      Boom.play();
+      // let Boom = new Audio("Boom.mp3");
+      // Boom.play();
       icon.classList.add('scale');
       setTimeout(() => {
         unlockEgg();

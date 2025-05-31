@@ -437,11 +437,21 @@ label {
     transition: background-color 0.3s ease;
 }
 
-#eggSection-img {
-    width: 40%;
+
+.img-wrapper {
+    width: 100%;
     height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#eggSection-img {
+    max-width: 40%;
+    max-height: 90%;
     display: block;
     margin: 0 auto;
+    border-radius: 2em;
 }
 
 /* 貪吃貓 */
@@ -891,7 +901,7 @@ footer p {
 
     #eggSection-img {
         width: 90%;
-        
+
     }
 
 
