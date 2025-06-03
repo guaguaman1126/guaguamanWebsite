@@ -56,7 +56,7 @@ function updateEggCounter() {
   setTimeout(() => {
     alert("恭喜你找到了一個彩蛋");
 
-    if (eggCount === 4) {
+    if (eggCount === 3) {
     alert("你找到了一定數量的彩蛋，解鎖優惠代碼8888");
 
     const eggSectionP = document.getElementById("eggSectionP");
